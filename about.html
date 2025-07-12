@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About – Mintara Finance Hub</title>
+  <style>
+    /* ─ THEME VARIABLES ─ */
+    :root {
+      --gradient: linear-gradient(135deg, #0F273D 0%, #1E4568 50%, #2D608F 100%);
+      --text-color: #FFFFFF;
+      --card-bg: rgba(255,255,255,0.1);
+      --accent: #3DDC97;
+    }
+    [data-theme="light"] {
+      --gradient: linear-gradient(135deg, #F0F5F9 0%, #D0E1F9 100%);
+      --text-color: #0D1B2A;
+      --card-bg: rgba(0,0,0,0.05);
+      --accent: #3DDC97;
+    }
+
+    /* ─ GLOBAL RESET & BASE ─ */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--gradient);
+      color: var(--text-color);
+      line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    /* ─ NAVIGATION ─ */
+    .top-nav {
+      position: fixed; top: 0; left: 0; width: 100%;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 2rem; z-index: 100;
+    }
+    .nav-left img { height: 125px; }
+    .nav-right a {
+      margin-left: 1.5rem; font-size: 1.25rem;
+      color: var(--text-color); transition: color 0.3s;
+    }
+    .nav-right a:hover { color: var(--accent); }
+    #theme-toggle { margin-left:1.5rem; font-size:1.25rem; cursor:pointer; }
+
+    /* ─ ABOUT CONTENT ─ */
+    .container {
+      max-width: 1000px; margin: 220px auto 0; padding: 2rem;
+      background: var(--card-bg); border-radius: 10px;
+      display: flex; flex-wrap: wrap; gap: 2rem;
+    }
+    .container img { flex:1 1 300px; border-radius:8px; }
+    .text {
+      flex:2 1 400px;
+    }
+    .text h2 {
+      font-size: 2.5rem; margin-bottom: 1rem; color: var(--accent);
+    }
+    .text p  { margin-bottom: 1rem; }
+    .story { margin-top: 1rem; font-style: italic; }
+
+    /* ─ MEET THE FOUNDER ─ */
+    .founder-section {
+      max-width: 1000px; margin: 3rem auto; padding: 2rem;
+      background: var(--card-bg); border-radius: 10px;
+      display: flex; align-items: center; gap: 2rem;
+    }
+    .founder-section img {
+      width: 150px; height: 150px; object-fit: cover;
+      object-position: top; /* show more hair */
+      border-radius: 50%; border: 3px solid var(--accent);
+    }
+   .founder-section img.linkedin-logo {
+  width: 25px !important;
+  height: 25px !important;
+  margin-top: 1rem !important;
+  border: none !important;
+  border-radius: 0 !important;  /* force square shape */
+}
+.founder-section > div:first-child {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .founder-text {
+      flex: 1;
+    }
+    .founder-text h2 {
+      font-size: 2rem; margin-bottom: 1rem; color: var(--accent);
+    }
+    .founder-text p { margin-bottom: 1rem; }
+
+    /* ─ FADE-IN & FOOTER ─ */
+    .fade-in {
+      opacity: 0; transform: translateY(20px);
+      animation: fadeIn 0.8s forwards;
+    }
+    @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
+    footer {
+      text-align: center; margin: 4rem 0 2rem; color: #AAAAAA;
+    }
+    footer a { color: var(--accent); }
+
+    /* ─ RESPONSIVE ─ */
+    @media (max-width: 768px) {
+      .nav-left img { height: 100px; }
+      .nav-right a, #theme-toggle { font-size: 1rem; margin-left: 1rem; }
+      .container, .founder-section {
+        flex-direction: column; margin-top: 240px;
+      }
+      .founder-section { text-align: center; }
+    }
+  </style>
+</head>
+<body data-theme="dark">
+  <nav class="top-nav">
+    <div class="nav-left">
+      <a href="index.html"><img src="images/logo.png" alt="Mintara logo"></a>
+    </div>
+    <div class="nav-right">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="videos.html">Videos</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+      <span id="theme-toggle">🌙</span>
+    </div>
+  </nav>
+
+  <!-- Core About Section -->
+  <section class="container fade-in" style="animation-delay:1.6s;">
+    <img src="images/about-team.png" alt="Team collaborating">
+    <div class="text">
+      <h2>About Mintara Finance Hub</h2>
+      <p>Mintara Finance Hub was born from seeing too many feel overwhelmed by money. We pair clear, jargon-free videos with hands-on tools so you can build confidence step by step.</p>
+      <p>Whether you’re saving for school, tackling debt, or planning for the future, our mission is to make financial literacy accessible for every age.</p>
+      <p class="story">“Watching my own family arrive here with almost no financial know-how inspired me to ensure no one feels left behind.”</p>
+    </div>
+  </section>
+
+  <!-- Meet the Founder -->
+  <section class="founder-section fade-in" style="animation-delay:2.2s;">
+    <div>
+      <img src="images/founder.png" alt="Founder Krishiv Patel">
+      <a href="https://www.linkedin.com/in/krishiv-patel-908018332" target="_blank" rel="noopener">
+        <img src="images/linkedin.png" alt="LinkedIn profile" class="linkedin-logo">
+      </a>
+    </div>
+    <div class="founder-text">
+      <h2>Meet the Founder, Krishiv Patel</h2>
+      <p>Hello! I’m Krishiv, a high schooler passionate about finance and business. I co-founded our school’s Finance Club, ran mock-investing challenges managing virtual portfolios, and tutored peers on setting up real-world budgets.</p>
+      <p>Through Mintara, I’m dedicated to sharing those trusted insights—so you can navigate your own financial journey with confidence and clarity.</p>
+    </div>
+  </section>
+
+  <footer class="fade-in" style="animation-delay:2.5s;">
+    &copy; 2025 Mintara Finance Hub • <a href="index.html">Home</a>
+  </footer>
+
+  <script>
+    // Theme toggle logic
+    const toggle = document.getElementById('theme-toggle');
+    const saved = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', saved);
+    toggle.textContent = saved === 'dark' ? '☀️' : '🌙';
+    toggle.addEventListener('click', () => {
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      toggle.textContent = next === 'dark' ? '☀️' : '🌙';
+    });
+  </script>
+</body>
+</html>

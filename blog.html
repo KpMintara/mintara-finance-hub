@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blog – Mintara Finance Hub</title>
+  <style>
+    /* ─ THEME VARIABLES & GLOBAL RESET ─ */
+    :root {
+      --gradient: linear-gradient(135deg, #0F273D 0%, #1E4568 50%, #2D608F 100%);
+      --text-color: #FFFFFF;
+      --card-bg: rgba(255,255,255,0.1);
+      --accent: #3DDC97;
+      --filter-bg: rgba(255,255,255,0.15);
+    }
+    [data-theme="light"] {
+      --gradient: linear-gradient(135deg, #F0F5F9 0%, #D0E1F9 100%);
+      --text-color: #0D1B2A;
+      --card-bg: rgba(0,0,0,0.05);
+      --accent: #3DDC97;
+      --filter-bg: rgba(0,0,0,0.1);
+    }
+    * { box-sizing: border-box; margin:0; padding:0; }
+    body {
+      font-family:'Segoe UI',sans-serif;
+      background:var(--gradient);
+      color:var(--text-color);
+      transition: background .3s, color .3s;
+      line-height:1.6;
+    }
+    a { text-decoration:none; color:inherit; }
+
+    /* ─ NAVIGATION ─ */
+    .top-nav { position:fixed; top:0; left:0; width:100%;
+      display:flex; align-items:center; justify-content:space-between;
+      padding:1rem 2rem; z-index:100;
+    }
+    .nav-left img { height:125px; }
+    .nav-right a, #theme-toggle {
+      margin-left:1.5rem; font-size:1.25rem; cursor:pointer;
+      color:var(--text-color); transition:color .3s;
+    }
+    .nav-right a:hover { color:var(--accent); }
+
+    /* ─ BLOG CONTROLS ─ */
+    .blog-container {
+      max-width:1000px; margin:220px auto 1rem; padding:0 2rem 2rem;
+    }
+    .blog-controls {
+      display:flex; flex-wrap:wrap; gap:1rem;
+      align-items:center; justify-content:space-between;
+      margin-bottom:1.5rem;
+    }
+    .blog-controls input {
+      flex:1 1 200px; padding:.5rem 1rem; border:none;
+      border-radius:4px; background:var(--filter-bg); color:var(--text-color);
+    }
+    .filter-btn {
+      padding:.5rem 1rem; border:none; border-radius:4px;
+      background:var(--filter-bg); color:var(--text-color);
+      cursor:pointer; transition:background .3s,color .3s;
+    }
+    .filter-btn.active {
+      background:var(--accent); color:#0D1B2A;
+    }
+
+    /* ─ POST GRID & CARDS ─ */
+    .post-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:1.5rem;
+    }
+    .post-card {
+      background:var(--card-bg); border-radius:8px;
+      padding:1.5rem; display:flex; flex-direction:column;
+      transition:transform .3s,box-shadow .3s;
+    }
+    .post-card:hover {
+      transform:translateY(-5px);
+      box-shadow:0 10px 20px rgba(0,0,0,0.5);
+    }
+    .post-card h3 {
+      color:var(--accent); font-size:1.25rem; margin-bottom:.5rem;
+    }
+    .post-card .date {
+      font-size:.85rem; color:#CCCCCC; margin-bottom:1rem;
+    }
+    .post-card .excerpt {
+      flex:1; font-size:.95rem; margin-bottom:1rem;
+    }
+    .post-card .read-more {
+      align-self:flex-start;
+      padding:.5rem 1rem; background:var(--accent);
+      color:#0D1B2A; border-radius:4px; font-size:.9rem;
+      transition:background .3s;
+    }
+    .post-card .read-more:hover { background:#35b787; }
+
+    /* ─ FADE-IN ANIMATION ─ */
+    .post-card.fade-in {
+      opacity:0; transform:translateY(20px);
+      animation:fadeIn 0.8s forwards;
+    }
+    @keyframes fadeIn {
+      to { opacity:1; transform:translateY(0); }
+    }
+    /* stagger delays */
+    .post-grid .post-card:nth-child(1) { animation-delay:1.6s; }
+    .post-grid .post-card:nth-child(2) { animation-delay:1.8s; }
+    .post-grid .post-card:nth-child(3) { animation-delay:2.0s; }
+    .post-grid .post-card:nth-child(4) { animation-delay:2.2s; }
+
+    /* ─ FOOTER & RESPONSIVE ─ */
+    footer {
+      text-align:center; margin:2rem 0; color:#AAAAAA;
+    }
+    footer a { color:var(--accent); }
+    @media(max-width:768px) {
+      .nav-left img { height:100px; }
+      .nav-right a,#theme-toggle { font-size:1rem; margin-left:1rem; }
+      .blog-controls { flex-direction:column; align-items:stretch; }
+      .blog-controls input { width:100%; }
+    }
+  </style>
+</head>
+<body data-theme="dark">
+  <nav class="top-nav">
+    <div class="nav-left">
+      <a href="index.html"><img src="images/logo.png" alt="Mintara logo"></a>
+    </div>
+    <div class="nav-right">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="videos.html">Videos</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+      <span id="theme-toggle">🌙</span>
+    </div>
+  </nav>
+
+  <section class="blog-container">
+    <div class="blog-controls fade-in" style="animation-delay:1.4s;">
+      <input type="text" id="searchInput" placeholder="Search posts…">
+      <div>
+        <button class="filter-btn active" data-cat="all">All</button>
+        <button class="filter-btn" data-cat="Budgeting">Budgeting</button>
+        <button class="filter-btn" data-cat="Saving">Saving</button>
+        <button class="filter-btn" data-cat="Investing">Investing</button>
+        <button class="filter-btn" data-cat="Debt">Debt</button>
+      </div>
+    </div>
+
+    <div class="post-grid">
+      <div class="post-card fade-in" data-title="Budgeting Basics" data-cat="Budgeting">
+        <h3>Budgeting Basics</h3>
+        <p class="date">2025-07-11</p>
+        <p class="excerpt">Learn the simple steps to create a budget that actually works for you.</p>
+        <a href="budgeting-basics.html" class="read-more">Read More</a>
+      </div>
+      <div class="post-card fade-in" data-title="Saving Strategies" data-cat="Saving">
+        <h3>Saving Strategies</h3>
+        <p class="date">2025-06-20</p>
+        <p class="excerpt">Discover practical tips to boost your savings—even on a tight income.</p>
+        <a href="#" class="read-more">Read More</a>
+      </div>
+      <div class="post-card fade-in" data-title="Intro to Investing" data-cat="Investing">
+        <h3>Intro to Investing</h3>
+        <p class="date">2025-05-15</p>
+        <p class="excerpt">A beginner’s guide to stocks, bonds, and ETFs—no jargon, just real talk.</p>
+        <a href="#" class="read-more">Read More</a>
+      </div>
+      <div class="post-card fade-in" data-title="Managing Debt" data-cat="Debt">
+        <h3>Managing Debt</h3>
+        <p class="date">2025-04-10</p>
+        <p class="excerpt">Strategies for tackling credit card, student loan, and personal debt effectively.</p>
+        <a href="#" class="read-more">Read More</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="fade-in" style="animation-delay:2.4s;">
+    &copy; 2025 Mintara Finance Hub • <a href="index.html">Home</a>
+  </footer>
+
+  <script>
+    // Theme toggle
+    const toggle = document.getElementById('theme-toggle');
+    const saved = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', saved);
+    toggle.textContent = saved==='dark'?'☀️':'🌙';
+    toggle.addEventListener('click', ()=>{
+      const next = document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      toggle.textContent = next==='dark'?'☀️':'🌙';
+    });
+
+    // Filter & search
+    const posts = [...document.querySelectorAll('.post-card')];
+    const btns = document.querySelectorAll('.filter-btn');
+    const input = document.getElementById('searchInput');
+    function filterPosts(){
+      const cat = document.querySelector('.filter-btn.active').dataset.cat;
+      const q = input.value.toLowerCase();
+      posts.forEach(p=>{
+        const okCat = cat==='all'||p.dataset.cat===cat;
+        const okSearch = p.dataset.title.toLowerCase().includes(q);
+        p.style.display = okCat&&okSearch?'flex':'none';
+      });
+    }
+    btns.forEach(b=>{
+      b.onclick=()=>{
+        btns.forEach(x=>x.classList.remove('active'));
+        b.classList.add('active');
+        filterPosts();
+      };
+    });
+    input.oninput = filterPosts;
+  </script>
+</body>
+</html>

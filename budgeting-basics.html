@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Budgeting Basics – Mintara Finance Hub</title>
+  <style>
+    /* ─ THEME VARIABLES & GLOBAL RESET ─ */
+    :root {
+      --gradient: linear-gradient(135deg, #0F273D 0%, #1E4568 50%, #2D608F 100%);
+      --text-color: #FFFFFF;
+      --card-bg: rgba(255,255,255,0.1);
+      --accent: #3DDC97;
+    }
+    [data-theme="light"] {
+      --gradient: linear-gradient(135deg, #F0F5F9 0%, #D0E1F9 100%);
+      --text-color: #0D1B2A;
+      --card-bg: rgba(0,0,0,0.05);
+      --accent: #3DDC97;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--gradient);
+      color: var(--text-color);
+      line-height: 1.6;
+      transition: background .3s, color .3s;
+    }
+    a { text-decoration: none; color: inherit; }
+    
+    /* ─ NAVIGATION ─ */
+    .top-nav {
+      position: fixed; top: 0; left: 0; width: 100%;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 2rem; z-index: 100;
+    }
+    .nav-left img { height: 125px; }
+    .nav-right a, #theme-toggle {
+      margin-left: 1.5rem; font-size: 1.25rem; cursor: pointer;
+      color: var(--text-color); transition: color .3s;
+    }
+    .nav-right a:hover { color: var(--accent); }
+
+    /* ─ ARTICLE STYLES ─ */
+    .article-container {
+      max-width: 800px;
+      margin: 220px auto 2rem;
+      padding: 2rem;
+      background: var(--card-bg);
+      border-radius: 10px;
+    }
+    .article-container img.hero {
+  width: 100%;          /* fills container width */
+  max-height: 400px;    /* optional limit */
+  object-fit: contain;
+}
+    .article-container h1 {
+      font-size: 2.5rem; margin-bottom: .5rem; color: var(--accent);
+    }
+    .article-container .date {
+      font-size: .85rem; color: #CCCCCC; margin-bottom: 1.5rem;
+    }
+    .article-container p {
+      margin-bottom: 1rem;
+    }
+    .article-container h2 {
+      margin-top: 1.5rem; margin-bottom: .75rem;
+      color: var(--accent);
+    }
+    .article-container ul {
+      margin-left: 1.5rem; margin-bottom: 1rem;
+    }
+    .article-container li {
+      margin-bottom: .5rem;
+    }
+    .cta-link {
+      display: inline-block; margin-top: 2rem;
+      padding: .75rem 1.5rem; background: var(--accent);
+      color: #0D1B2A; border-radius: 4px; transition: background .3s;
+    }
+    .cta-link:hover { background: #35b787; }
+
+    /* ─ FOOTER & FADE-IN ─ */
+    footer {
+      text-align: center; margin: 2rem 0; color: #AAAAAA;
+    }
+    footer a { color: var(--accent); }
+    .fade-in {
+      opacity: 0; transform: translateY(20px);
+      animation: fadeIn .8s forwards;
+    }
+    @keyframes fadeIn { to { opacity:1; transform:translateY(0); } }
+
+    /* ─ RESPONSIVE ─ */
+    @media (max-width: 768px) {
+      .nav-left img { height: 100px; }
+      .nav-right a, #theme-toggle { font-size: 1rem; margin-left: 1rem; }
+      .article-container { margin-top: 260px; padding: 1rem; }
+    }
+  </style>
+</head>
+<body data-theme="dark">
+  <nav class="top-nav">
+    <div class="nav-left">
+      <a href="index.html"><img src="images/logo.png" alt="Mintara logo"></a>
+    </div>
+    <div class="nav-right">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="videos.html">Videos</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+      <span id="theme-toggle">🌙</span>
+    </div>
+  </nav>
+
+  <article class="article-container fade-in" style="animation-delay:1.6s;">
+    <img src="images/budgeting-hero.png" alt="Budgeting illustration" class="hero">
+    <h1>Budgeting Basics: Take Control of Your Money</h1>
+    <p class="date">July 11, 2025 • 4 min read</p>
+    
+    <p>Budgeting is more than just tracking your spending—it’s a plan that puts you in the driver’s seat of your finances. By knowing exactly where your money goes and setting clear goals, you can save for what matters, avoid debt traps, and build lasting wealth.</p>
+    
+    <h2>Why Budgeting Matters</h2>
+    <ul>
+      <li><strong>Clarity:</strong> See your income and expenses at a glance.</li>
+      <li><strong>Control:</strong> Decide your priorities instead of reacting to bills.</li>
+      <li><strong>Achieve Goals:</strong> Save for emergencies, travel, education, or retirement.</li>
+      <li><strong>Reduce Stress:</strong> Eliminate money worries by staying on track.</li>
+    </ul>
+    
+    <h2>5 Steps to Your First Budget</h2>
+    <ol>
+      <li><strong>Calculate Net Income:</strong> Add up all take-home pay (after taxes).</li>
+      <li><strong>List Expenses:</strong> Record fixed costs (rent, utilities) and variable costs (groceries, entertainment).</li>
+      <li><strong>Set Spending Categories:</strong> Allocate dollars to essentials, savings, debt repayment, and fun.</li>
+      <li><strong>Choose a Method:</strong>  
+        <ul>
+          <li><em>50/30/20 Rule:</em> 50% needs, 30% wants, 20% savings/debt.</li>
+          <li><em>Zero-Based:</em> Every dollar has a job—income minus expenses equals zero.</li>
+          <li><em>Envelope System:</em> Cash in envelopes for each category.</li>
+        </ul>
+      </li>
+      <li><strong>Track & Adjust:</strong> Review weekly and tweak categories as life changes.</li>
+    </ol>
+    
+    <h2>Tips for Sticking with It</h2>
+    <ul>
+      <li><strong>Automate Savings:</strong> Set up recurring transfers.</li>
+      <li><strong>Use Apps:</strong> Try Mintara’s built-in calculators and trackers.</li>
+      <li><strong>Build a Buffer:</strong> Include a “miscellaneous” category to avoid surprises.</li>
+      <li><strong>Celebrate Wins:</strong> Reward yourself when you hit milestones.</li>
+    </ul>
+    
+    <p>Starting a budget might feel tedious, but with the right tools and a clear plan, it quickly becomes second nature—and one of the most powerful habits for financial success.</p>
+    
+    <a href="videos.html" class="cta-link">Watch “Budgeting Basics” Video Lesson</a>
+  </article>
+
+  <footer class="fade-in" style="animation-delay:2.0s;">
+    &copy; 2025 Mintara Finance Hub • <a href="index.html">Home</a>
+  </footer>
+
+  <script>
+    // Theme toggle logic
+    const toggle = document.getElementById('theme-toggle');
+    const saved = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', saved);
+    toggle.textContent = saved==='dark'?'☀️':'🌙';
+    toggle.addEventListener('click', () => {
+      const next = document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      toggle.textContent = next==='dark'?'☀️':'🌙';
+    });
+  </script>
+</body>
+</html>

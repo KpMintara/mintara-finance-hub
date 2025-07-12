@@ -1,0 +1,128 @@
+<!-- contact.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact – Mintara Finance Hub</title>
+  <style>
+    /* ───── THEME VARIABLES ───── */
+    :root {
+      --gradient: linear-gradient(135deg, #0F273D 0%, #1E4568 50%, #2D608F 100%);
+      --text-color: #FFFFFF;
+      --card-bg: rgba(255,255,255,0.1);
+      --accent: #3DDC97;
+    }
+    [data-theme="light"] {
+      --gradient: linear-gradient(135deg, #F0F5F9 0%, #D0E1F9 100%);
+      --text-color: #0D1B2A;
+      --card-bg: rgba(0,0,0,0.05);
+      --accent: #3DDC97;
+    }
+
+    /* ───── GLOBAL RESET & BASE ───── */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--gradient);
+      color: var(--text-color);
+      line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    /* ───── NAVIGATION ───── */
+    .top-nav {
+      position: fixed; top: 0; left: 0; width: 100%;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 2rem; z-index: 100;
+    }
+    .nav-left img { height: 125px; }
+    .nav-right a {
+      margin-left: 1.5rem; font-size: 1.25rem;
+      color: var(--text-color); transition: color 0.3s;
+    }
+    .nav-right a:hover { color: var(--accent); }
+    #theme-toggle {
+      margin-left: 1.5rem; font-size: 1.25rem; cursor: pointer;
+    }
+
+    /* ───── CONTENT CONTAINER ───── */
+    .container {
+      max-width: 800px; margin: 220px auto 0; padding: 2rem;
+      background: var(--card-bg); border-radius: 10px;
+    }
+    .container h2 {
+      font-size: 2.5rem; margin-bottom: 1rem;
+      color: var(--accent);
+    }
+    .container p { margin-bottom: 1rem; }
+
+    /* ───── FADE-IN ───── */
+    .fade-in {
+      opacity: 0; transform: translateY(20px);
+      animation: fadeIn 0.8s forwards;
+    }
+    @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
+
+    /* ───── FOOTER ───── */
+    footer {
+      text-align: center; margin: 4rem 0 2rem; color: #AAAAAA;
+    }
+    footer a { color: var(--accent); }
+
+    /* ───── RESPONSIVE ───── */
+    @media (max-width: 768px) {
+      .nav-left img { height: 100px; }
+      .nav-right a, #theme-toggle { font-size: 1rem; margin-left: 1rem; }
+      .container { margin-top: 240px; }
+    }
+  </style>
+</head>
+<body data-theme="dark">
+  <nav class="top-nav">
+  <div class="nav-left">
+    <a href="index.html">
+      <img src="images/logo.png" alt="Mintara logo">
+    </a>
+  </div>
+  <div class="nav-right">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="videos.html">Videos</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+    <span id="theme-toggle">🌙</span>
+  </div>
+</nav>
+
+
+  <section id="contact" class="container fade-in" style="animation-delay:1.9s;">
+    <h2>Contact Us</h2>
+    <p>If you have any questions or feedback, email us at  
+       <a href="mailto:Mintarafinance@gmail.com">Mintarafinance@gmail.com</a>.</p>
+    <p>Prefer to send a message directly? Submit this form:  
+       <a href="https://example.com/temporary-form-link" target="_blank" rel="noopener">
+         Temporary Form Link
+       </a> (link coming soon).</p>
+  </section>
+
+  <footer class="fade-in" style="animation-delay:2.2s;">
+    &copy; 2025 Mintara Finance Hub • <a href="index.html">Home</a>
+  </footer>
+
+  <script>
+    // Theme toggle logic
+    const toggleContact = document.getElementById('theme-toggle');
+    const currentContact = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', currentContact);
+    toggleContact.textContent = currentContact === 'dark' ? '☀️' : '🌙';
+    toggleContact.addEventListener('click', () => {
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      toggleContact.textContent = next === 'dark' ? '☀️' : '🌙';
+    });
+  </script>
+</body>
+</html>
