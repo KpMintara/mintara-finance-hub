@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Saving Strategies – Mintara Finance Hub</title>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0J9QXJ8FLY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-0J9QXJ8FLY');
+  </script>
+
+  <style>
+    /* ─ THEME VARIABLES & RESET ─ */
+    :root {
+      --gradient: linear-gradient(135deg, #0F273D 0%, #1E4568 50%, #2D608F 100%);
+      --text-color: #FFFFFF;
+      --card-bg: rgba(255,255,255,0.1);
+      --accent: #3DDC97;
+    }
+    [data-theme="light"] {
+      --gradient: linear-gradient(135deg, #F0F5F9 0%, #D0E1F9 100%);
+      --text-color: #0D1B2A;
+      --card-bg: rgba(0,0,0,0.05);
+      --accent: #3DDC97;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--gradient);
+      color: var(--text-color);
+      line-height: 1.6;
+      transition: background .3s, color .3s;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    /* ─ NAVIGATION ─ */
+    .top-nav {
+      position: fixed; top: 0; left: 0; width: 100%;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 2rem; z-index: 100;
+    }
+    .nav-left img { height: 125px; }
+    .nav-right a, #theme-toggle {
+      margin-left: 1.5rem; font-size: 1.25rem; cursor: pointer;
+      color: var(--text-color); transition: color .3s;
+    }
+    .nav-right a:hover { color: var(--accent); }
+
+    /* ─ ARTICLE STYLES ─ */
+    .article-container {
+      max-width: 800px; margin: 220px auto 2rem; padding: 2rem;
+      background: var(--card-bg); border-radius: 10px;
+    }
+    .article-container img.hero {
+      width: 100%; border-radius: 8px; margin-bottom: 1.5rem;
+    }
+    .article-container h1 {
+      font-size: 2.5rem; margin-bottom: .5rem; color: var(--accent);
+    }
+    .article-container .date {
+      font-size: .85rem; color: #CCCCCC; margin-bottom: 1.5rem;
+    }
+    .article-container p {
+      margin-bottom: 1rem;
+    }
+    .article-container h2 {
+      margin-top: 1.5rem; margin-bottom: .75rem;
+      color: var(--accent);
+    }
+    .article-container ul,
+    .article-container ol {
+      margin-left: 1.5rem; margin-bottom: 1rem;
+    }
+    .article-container li {
+      margin-bottom: .5rem;
+    }
+    .cta-link {
+      display: inline-block; margin-top: 2rem;
+      padding: .75rem 1.5rem; background: var(--accent);
+      color: #0D1B2A; border-radius: 4px; transition: background .3s;
+    }
+    .cta-link:hover { background: #35b787; }
+
+    /* ─ FOOTER & ANIMATION ─ */
+    footer {
+      text-align: center; margin: 2rem 0; color: #AAAAAA;
+    }
+    footer a { color: var(--accent); }
+    .fade-in {
+      opacity: 0; transform: translateY(20px);
+      animation: fadeIn .8s forwards;
+    }
+    @keyframes fadeIn { to { opacity:1; transform:translateY(0); } }
+
+    /* ─ RESPONSIVE ─ */
+    @media (max-width: 768px) {
+      .nav-left img { height: 100px; }
+      .nav-right a, #theme-toggle { font-size: 1rem; margin-left: 1rem; }
+      .article-container { margin-top: 260px; padding: 1rem; }
+    }
+  </style>
+</head>
+
+<body data-theme="dark">
+  <nav class="top-nav">
+    <div class="nav-left">
+      <a href="index.html"><img src="images/logo.png" alt="Mintara logo"></a>
+    </div>
+    <div class="nav-right">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="videos.html">Videos</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+      <span id="theme-toggle">🌙</span>
+    </div>
+  </nav>
+
+  <article class="article-container fade-in" style="animation-delay:1.6s;">
+    <img src="images/saving-hero.png" alt="Hands placing coins into jar" class="hero">
+    <h1>Saving Strategies: Build Your Financial Safety Net</h1>
+    <p class="date">July 12, 2025 • 5 min read</p>
+
+    <p>Saving money is the foundation of financial security. Whether you’re preparing for unexpected expenses or working toward big goals, having smart strategies in place ensures you steadily grow your nest egg without feeling deprived.</p>
+
+    <h2>Why Consistent Saving Pays Off</h2>
+    <ul>
+      <li><strong>Compound Growth:</strong> Even small contributions accumulate interest over time.</li>
+      <li><strong>Emergency Cushion:</strong> Funds set aside prevent debt during unexpected events.</li>
+      <li><strong>Goal Achievement:</strong> Major purchases—college, home, travel—become possible.</li>
+      <li><strong>Peace of Mind:</strong> Watching savings grow reduces financial stress.</li>
+    </ul>
+
+    <h2>4 Effective Saving Strategies</h2>
+    <ol>
+      <li><strong>Pay Yourself First:</strong> Automate a fixed amount into savings the moment you’re paid.</li>
+      <li><strong>Round-Up Apps:</strong> Use micro-savings tools that round your purchases up to the nearest dollar and stash the spare change.</li>
+      <li><strong>Bucket Method:</strong> Divide your savings into sub-goals (e.g. “Emergency,” “Vacation,” “Invest”).</li>
+      <li><strong>3–6 Month Fund:</strong> Aim to save three to six months of living expenses in a high-yield account.</li>
+    </ol>
+
+    <h2>Tips to Make Saving Stick</h2>
+    <ul>
+      <li><strong>Start Small:</strong> Begin with 5% of your income and increase over time.</li>
+      <li><strong>Visual Reminders:</strong> Track progress with a chart or app that shows your balance rising.</li>
+      <li><strong>Challenge Yourself:</strong> Try a “no-spend week” or a $5-a-day saving challenge.</li>
+      <li><strong>Reward Milestones:</strong> Celebrate when you hit 25%, 50%, and 100% of your target.</li>
+    </ul>
+
+    <p>Implementing just one of these strategies today can set you on a path to lasting financial resilience. The key is consistency—choose a method that fits your lifestyle and automate it.</p>
+
+    <a href="videos.html" class="cta-link">Watch “Saving Strategies” Lesson</a>
+  </article>
+
+  <footer class="fade-in" style="animation-delay:2.0s;">
+    &copy; 2025 Mintara Finance Hub • <a href="index.html">Home</a>
+  </footer>
+
+  <script>
+    // Theme toggle
+    const toggle = document.getElementById('theme-toggle');
+    const saved = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', saved);
+    toggle.textContent = saved === 'dark' ? '☀️' : '🌙';
+    toggle.addEventListener('click', () => {
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      toggle.textContent = next === 'dark' ? '☀️' : '🌙';
+    });
+  </script>
+</body>
+</html>
