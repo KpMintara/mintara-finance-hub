@@ -1,4 +1,3 @@
-<!-- contact.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Contact – Mintara Finance Hub</title>
   <style>
-    /* ───── THEME VARIABLES ───── */
     :root {
       --gradient: linear-gradient(135deg, #0F273D 0%, #1E4568 50%, #2D608F 100%);
       --text-color: #FFFFFF;
@@ -19,109 +17,125 @@
       --card-bg: rgba(0,0,0,0.05);
       --accent: #3DDC97;
     }
-
-    /* ───── GLOBAL RESET & BASE ───── */
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * { box-sizing: border-box; margin:0; padding:0; }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: var(--gradient);
       color: var(--text-color);
-      line-height: 1.6;
-      transition: background 0.3s, color 0.3s;
+      transition: background .3s, color .3s;
+      line-height:1.6;
     }
-    a { text-decoration: none; color: inherit; }
+    a { text-decoration:none; color:inherit; }
 
-    /* ───── NAVIGATION ───── */
+    /* NAV */
     .top-nav {
-      position: fixed; top: 0; left: 0; width: 100%;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1rem 2rem; z-index: 100;
+      position:fixed; top:0; left:0; width:100%;
+      display:flex; align-items:center; justify-content:space-between;
+      padding:1rem 2rem; z-index:100;
     }
-    .nav-left img { height: 125px; }
-    .nav-right a {
-      margin-left: 1.5rem; font-size: 1.25rem;
-      color: var(--text-color); transition: color 0.3s;
+    .nav-left img { height:125px; }
+    .nav-right a, #theme-toggle {
+      margin-left:1.5rem; font-size:1.25rem; cursor:pointer;
+      color:var(--text-color); transition:color .3s;
     }
-    .nav-right a:hover { color: var(--accent); }
-    #theme-toggle {
-      margin-left: 1.5rem; font-size: 1.25rem; cursor: pointer;
+    .nav-right a:hover { color:var(--accent); }
+
+    /* CONTACT FORM */
+    .contact-container {
+      max-width:600px; margin:220px auto 2rem; padding:2rem;
+      background:var(--card-bg); border-radius:10px;
+    }
+    .contact-container h2 {
+      font-size:2rem; margin-bottom:1rem; color:var(--accent);
+    }
+    .contact-container form {
+      display:flex; flex-direction:column; gap:1rem;
+    }
+    .contact-container label {
+      font-size:1rem; margin-bottom:0.25rem;
+    }
+    .contact-container input,
+    .contact-container textarea {
+      padding:0.75rem; border:none; border-radius:4px;
+      background:rgba(255,255,255,0.2); color:var(--text-color);
+      font-size:1rem;
+    }
+    .contact-container textarea { resize:vertical; min-height:120px; }
+    .contact-container button {
+      align-self:flex-start; padding:0.75rem 1.5rem;
+      background:var(--accent); color:#0D1B2A; border:none;
+      border-radius:4px; cursor:pointer; font-size:1rem;
+      transition:background .3s;
+    }
+    .contact-container button:hover {
+      background:#35b787;
     }
 
-    /* ───── CONTENT CONTAINER ───── */
-    .container {
-      max-width: 800px; margin: 220px auto 0; padding: 2rem;
-      background: var(--card-bg); border-radius: 10px;
-    }
-    .container h2 {
-      font-size: 2.5rem; margin-bottom: 1rem;
-      color: var(--accent);
-    }
-    .container p { margin-bottom: 1rem; }
-
-    /* ───── FADE-IN ───── */
-    .fade-in {
-      opacity: 0; transform: translateY(20px);
-      animation: fadeIn 0.8s forwards;
-    }
-    @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
-
-    /* ───── FOOTER ───── */
+    /* FOOTER */
     footer {
-      text-align: center; margin: 4rem 0 2rem; color: #AAAAAA;
+      text-align:center; margin:2rem 0; color:#AAAAAA;
     }
-    footer a { color: var(--accent); }
+    footer a { color:var(--accent); }
 
-    /* ───── RESPONSIVE ───── */
-    @media (max-width: 768px) {
-      .nav-left img { height: 100px; }
-      .nav-right a, #theme-toggle { font-size: 1rem; margin-left: 1rem; }
-      .container { margin-top: 240px; }
+    @media (max-width:768px) {
+      .nav-left img { height:100px; }
+      .nav-right a,#theme-toggle { font-size:1rem; margin-left:1rem; }
+      .contact-container { margin-top:260px; padding:1rem; }
     }
   </style>
 </head>
 <body data-theme="dark">
   <nav class="top-nav">
-  <div class="nav-left">
-    <a href="index.html">
-      <img src="images/logo.png" alt="Mintara logo">
-    </a>
-  </div>
-  <div class="nav-right">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="videos.html">Videos</a>
-    <a href="blog.html">Blog</a>
-    <a href="contact.html">Contact</a>
-    <span id="theme-toggle">🌙</span>
-  </div>
-</nav>
+    <div class="nav-left">
+      <a href="index.html"><img src="images/logo.png" alt="Mintara logo"></a>
+    </div>
+    <div class="nav-right">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="videos.html">Videos</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+      <span id="theme-toggle">🌙</span>
+    </div>
+  </nav>
 
-
-  <section id="contact" class="container fade-in" style="animation-delay:1.9s;">
+  <div class="contact-container">
     <h2>Contact Us</h2>
-    <p>If you have any questions or feedback, email us at  
-       <a href="mailto:Mintarafinance@gmail.com">Mintarafinance@gmail.com</a>.</p>
-    <p>Prefer to send a message directly? Submit this form:  
-       <a href="https://example.com/temporary-form-link" target="_blank" rel="noopener">
-         Temporary Form Link
-       </a> (link coming soon).</p>
-  </section>
+    <form action="https://formspree.io/f/mjkobroe" method="POST">
+      <!-- Spam honeypot -->
+      <input type="text" name="_gotcha" style="display:none" />
 
-  <footer class="fade-in" style="animation-delay:2.2s;">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" required></textarea>
+
+      <!-- Disable Captcha if you like -->
+      <input type="hidden" name="_captcha" value="false" />
+
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+
+  <footer>
     &copy; 2025 Mintara Finance Hub • <a href="index.html">Home</a>
   </footer>
 
   <script>
-    // Theme toggle logic
-    const toggleContact = document.getElementById('theme-toggle');
-    const currentContact = localStorage.getItem('theme') || 'dark';
-    document.documentElement.setAttribute('data-theme', currentContact);
-    toggleContact.textContent = currentContact === 'dark' ? '☀️' : '🌙';
-    toggleContact.addEventListener('click', () => {
+    // Theme toggle
+    const toggle = document.getElementById('theme-toggle');
+    const saved = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', saved);
+    toggle.textContent = saved === 'dark' ? '☀️' : '🌙';
+    toggle.addEventListener('click', () => {
       const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
       document.documentElement.setAttribute('data-theme', next);
       localStorage.setItem('theme', next);
-      toggleContact.textContent = next === 'dark' ? '☀️' : '🌙';
+      toggle.textContent = next === 'dark' ? '☀️' : '🌙';
     });
   </script>
 </body>
