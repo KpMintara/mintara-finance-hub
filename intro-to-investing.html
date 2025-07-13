@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Introduction to Investing – Mintara Finance Hub</title>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0J9QXJ8FLY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-0J9QXJ8FLY');
+  </script>
+
+  <style>
+    /* ─ THEME VARIABLES & RESET ─ */
+    :root {
+      --gradient: linear-gradient(135deg, #0F273D 0%, #1E4568 50%, #2D608F 100%);
+      --text-color: #FFFFFF;
+      --card-bg: rgba(255,255,255,0.1);
+      --accent: #3DDC97;
+    }
+    [data-theme="light"] {
+      --gradient: linear-gradient(135deg, #F0F5F9 0%, #D0E1F9 100%);
+      --text-color: #0D1B2A;
+      --card-bg: rgba(0,0,0,0.05);
+      --accent: #3DDC97;
+    }
+    * { box-sizing: border-box; margin:0; padding:0; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--gradient);
+      color: var(--text-color);
+      line-height: 1.6;
+      transition: background .3s, color .3s;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    /* ─ NAVIGATION ─ */
+    .top-nav {
+      position: fixed; top: 0; left: 0; width: 100%;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 2rem; z-index: 100;
+    }
+    .nav-left img { height: 125px; }
+    .nav-right a, #theme-toggle {
+      margin-left: 1.5rem; font-size: 1.25rem; cursor: pointer;
+      color: var(--text-color); transition: color .3s;
+    }
+    .nav-right a:hover { color: var(--accent); }
+
+    /* ─ ARTICLE STYLES ─ */
+    .article-container {
+      max-width: 800px; margin: 220px auto 2rem; padding: 2rem;
+      background: var(--card-bg); border-radius: 10px;
+    }
+    .article-container img.hero {
+      width: 100%; border-radius: 8px; margin-bottom: 1.5rem;
+    }
+    .article-container h1 {
+      font-size: 2.5rem; margin-bottom: .5rem; color: var(--accent);
+    }
+    .article-container .date {
+      font-size: .85rem; color: #CCCCCC; margin-bottom: 1.5rem;
+    }
+    .article-container p {
+      margin-bottom: 1rem;
+    }
+    .article-container h2 {
+      margin-top: 1.5rem; margin-bottom: .75rem;
+      color: var(--accent);
+    }
+    .article-container ul,
+    .article-container ol {
+      margin-left: 1.5rem; margin-bottom: 1rem;
+    }
+    .article-container li {
+      margin-bottom: .5rem;
+    }
+    .cta-link {
+      display: inline-block; margin-top: 2rem;
+      padding: .75rem 1.5rem; background: var(--accent);
+      color: #0D1B2A; border-radius: 4px; transition: background .3s;
+    }
+    .cta-link:hover { background: #35b787; }
+
+    /* ─ FOOTER & FADE-IN ─ */
+    footer {
+      text-align: center; margin: 2rem 0; color: #AAAAAA;
+    }
+    footer a { color: var(--accent); }
+    .fade-in {
+      opacity: 0; transform: translateY(20px);
+      animation: fadeIn .8s forwards;
+    }
+    @keyframes fadeIn { to { opacity:1; transform:translateY(0); } }
+
+    /* ─ RESPONSIVE ─ */
+    @media (max-width: 768px) {
+      .nav-left img { height: 100px; }
+      .nav-right a, #theme-toggle { font-size: 1rem; margin-left: 1rem; }
+      .article-container { margin-top: 260px; padding: 1rem; }
+    }
+  </style>
+</head>
+
+<body data-theme="dark">
+  <nav class="top-nav">
+    <div class="nav-left">
+      <a href="index.html"><img src="images/logo.png" alt="Mintara logo"></a>
+    </div>
+    <div class="nav-right">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="videos.html">Videos</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+      <span id="theme-toggle">🌙</span>
+    </div>
+  </nav>
+
+  <article class="article-container fade-in" style="animation-delay:1.6s;">
+    <img src="images/investing-hero.png" alt="Line graph rising over coins" class="hero">
+    <h1>Introduction to Investing: Getting Started</h1>
+    <p class="date">July 13, 2025 • 7 min read</p>
+
+    <p>Investing is the process of deploying your money into assets that have the potential to grow over time. Unlike saving, which focuses on preserving capital, investing aims to build wealth through market gains and compounding.</p>
+
+    <h2>Why Invest Early</h2>
+    <ul>
+      <li><strong>Compound Interest:</strong> Earnings generate their own earnings, accelerating growth.</li>
+      <li><strong>Inflation Hedge:</strong> Investing can outpace inflation and protect purchasing power.</li>
+      <li><strong>Goal Achievement:</strong> Faster path to retirement, homeownership, or education funds.</li>
+    </ul>
+
+    <h2>Common Investment Types</h2>
+    <ul>
+      <li><strong>Stocks:</strong> Partial ownership in companies, with potential for capital gains and dividends.</li>
+      <li><strong>Bonds:</strong> Loans to governments or corporations that pay fixed interest.</li>
+      <li><strong>ETFs & Mutual Funds:</strong> Bundles of assets offering instant diversification.</li>
+      <li><strong>Real Estate:</strong> Property investments for income (rent) and appreciation.</li>
+      <li><strong>Cryptocurrency:</strong> Digital assets with high risk/reward profiles.</li>
+    </ul>
+
+    <h2>5 Steps to Begin Investing</h2>
+    <ol>
+      <li><strong>Set Clear Goals:</strong> Define your time horizon and target returns.</li>
+      <li><strong>Educate Yourself:</strong> Read beginner guides, watch tutorials, and follow reputable analysts.</li>
+      <li><strong>Choose a Platform:</strong> Open an account with a brokerage or robo-advisor that fits your needs.</li>
+      <li><strong>Start Small:</strong> Invest a modest amount initially to gain experience without overexposure.</li>
+      <li><strong>Diversify:</strong> Spread investments across asset classes to reduce risk.</li>
+    </ol>
+
+    <h2>Tips for Emotional Control</h2>
+    <ul>
+      <li><strong>Dollar-Cost Averaging:</strong> Invest fixed amounts regularly, avoiding market timing.</li>
+      <li><strong>Long-Term Focus:</strong> Ignore daily price swings and stay invested through volatility.</li>
+      <li><strong>Rebalance Periodically:</strong> Adjust your portfolio to maintain target asset allocation.</li>
+      <li><strong>Keep Learning:</strong> Follow market news but stick to your plan—avoid impulsive moves.</li>
+    </ul>
+
+    <p>Investing can seem daunting at first, but with a clear plan, disciplined approach, and the right resources, anyone can join the market and work toward financial freedom.</p>
+
+    <a href="videos.html" class="cta-link">Watch “Intro to Investing” Lesson</a>
+  </article>
+
+  <footer class="fade-in" style="animation-delay:2.0s;">
+    &copy; 2025 Mintara Finance Hub • <a href="index.html">Home</a>
+  </footer>
+
+  <script>
+    // Theme toggle
+    const toggle = document.getElementById('theme-toggle');
+    const saved = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', saved);
+    toggle.textContent = saved === 'dark' ? '☀️' : '🌙';
+    toggle.addEventListener('click', () => {
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      toggle.textContent = next === 'dark' ? '☀️' : '🌙';
+    });
+  </script>
+</body>
+</html>
