@@ -11,6 +11,74 @@
   <link rel="stylesheet" href="css/styles.min.css">
   <!-- Your compiled JS -->
   <script defer src="js/scripts.min.js"></script>
+  <head>
+  <!-- your existing scripts & links… -->
+
+  <style>
+    /* ─── Sidebar Layout ─── */
+    .home-content {
+      display: flex;
+      align-items: flex-start;
+      gap: 2rem;
+      margin-top: 200px;
+      padding: 0 2rem;
+    }
+    .main-content { flex: 2; }
+    .sidebar {
+      flex: 1;
+      background: var(--card-bg);
+      padding: 1rem;
+      border-radius: 8px;
+    }
+    /* Calculator widgets */
+    .calc-widget {
+      background: var(--card-bg);
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      border-radius: 6px;
+    }
+    .calc-widget h3 { color: var(--accent); margin-bottom: .5rem; }
+    .calc-widget form {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: .75rem;
+      margin-bottom: .75rem;
+    }
+    .calc-widget input,
+    .calc-widget button {
+      padding: .5rem;
+      border: none;
+      border-radius: 4px;
+    }
+    .calc-widget button {
+      background: var(--accent);
+      color: #0D1B2A;
+      cursor: pointer;
+      transition: background .3s;
+    }
+    .calc-widget button:hover {
+      background: #35b787;
+    }
+    /* Make charts responsive */
+    .sidebar canvas {
+      max-width: 100%;
+      height: auto;
+    }
+    /* Mobile: stack sidebar under main */
+    @media (max-width: 768px) {
+      .home-content {
+        flex-direction: column;
+        margin-top: 260px;
+      }
+      .sidebar {
+        margin-top: 2rem;
+      }
+    }
+  </style>
+
+  <!-- then your closing head tags… -->
+</head>
+
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -189,6 +257,48 @@
       <button onclick="location.href='videos.html'" class="cta-button">Get Started Now</button>
     </div>
   </section>
+<aside class="sidebar">
+  <section id="calculators">
+    <h2>Interactive Money Tools</h2>
+
+    <!-- Compound Interest -->
+    <div class="calc-widget">
+      <h3>Compound Interest Calculator</h3>
+      <form id="compound-form">
+        <input type="number" id="ci-principal"   placeholder="Principal ($)" required>
+        <input type="number" id="ci-rate"        placeholder="Annual Rate (%)" step="0.01" required>
+        <input type="number" id="ci-years"       placeholder="Years" required>
+        <input type="number" id="ci-frequency"   placeholder="Compounds per Year" value="12" required>
+        <button type="submit">Calculate</button>
+      </form>
+      <canvas id="ci-chart"></canvas>
+    </div>
+
+    <!-- Loan Amortization -->
+    <div class="calc-widget">
+      <h3>Loan Amortization</h3>
+      <form id="loan-form">
+        <input type="number" id="loan-amount" placeholder="Loan Amount ($)" required>
+        <input type="number" id="loan-rate"   placeholder="Annual Rate (%)" step="0.01" required>
+        <input type="number" id="loan-term"   placeholder="Term (Years)" required>
+        <button type="submit">Calculate</button>
+      </form>
+      <canvas id="loan-chart"></canvas>
+    </div>
+
+    <!-- What-If Budget Planner -->
+    <div class="calc-widget">
+      <h3>What-If Budget Planner</h3>
+      <form id="budget-form">
+        <input type="number" id="bud-income"   placeholder="Net Income ($)" required>
+        <input type="number" id="bud-fixed"    placeholder="Fixed Expenses ($)" required>
+        <input type="number" id="bud-variable" placeholder="Variable Expenses ($)" required>
+        <button type="submit">Plan</button>
+      </form>
+      <canvas id="bud-chart"></canvas>
+    </div>
+  </section>
+</aside>
 
   <section class="features fade-in" style="animation-delay:1.9s;">
     <div class="feature-card">
