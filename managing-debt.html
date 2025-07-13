@@ -57,10 +57,11 @@
       background: var(--card-bg); border-radius: 10px;
     }
     .article-container img.hero {
-  width: 100%;        /* fills up to its container */
-  max-width: 250px;   /* never grows wider than 600px */
-  height: auto;       /* keeps its aspect ratio */
-  margin-bottom: 1.5rem;     /* centers it horizontally */
+  display: block;      /* make it a block so auto margins work */
+  margin: 0 auto;      /* top/bottom 0, left/right auto centers it */
+  width: 100%;         /* fills up to its container */
+  max-width: 250px;    /* caps the size */
+  height: auto;        /* preserves aspect ratio */
 }
 
     .article-container h1 {
