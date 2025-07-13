@@ -57,8 +57,12 @@
       background: var(--card-bg); border-radius: 10px;
     }
     .article-container img.hero {
-      width: 100%; border-radius: 8px; margin-bottom: 1.5rem;
-    }
+  width: 100%;        /* fills up to its container */
+  max-width: 600px;   /* never grows wider than 600px */
+  height: auto;       /* keeps its aspect ratio */
+  margin: 0 auto;     /* centers it horizontally */
+}
+
     .article-container h1 {
       font-size: 2.5rem; margin-bottom: .5rem; color: var(--accent);
     }
@@ -124,7 +128,7 @@
   <article class="article-container fade-in" style="animation-delay:1.6s;">
     <img src="images/debt-hero.png" alt="Person cutting up credit cards" class="hero">
     <h1>Managing Debt: Strategies to Gain Control</h1>
-    <p class="date">July 14, 2025 • 6 min read</p>
+    <p class="date">July 14, 2025 • 3 min read</p>
 
     <p>Debt can feel like a heavy burden, but with clear strategies and disciplined repayment, you can break free and build a healthier financial future. This guide walks you through proven methods to tackle debt effectively.</p>
 
