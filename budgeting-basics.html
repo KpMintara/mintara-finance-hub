@@ -1,22 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- 1) Third-party libraries & your global styles/scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
-  <!-- Your compiled CSS -->
-  <link rel="stylesheet" href="css/styles.min.css">
-  <!-- Your compiled JS -->
-  <script defer src="js/scripts.min.js"></script>
-
-  <meta charset="UTF-8"/>
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Budgeting Basics – Mintara Finance Hub</title>
+
+  <!-- Load Chart.js for the calculator -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
   <style>
-    /* ─ THEME VARIABLES & GLOBAL RESET ─ */
+    /* ─ THEME VARIABLES & RESET ─ */
     :root {
       --gradient: linear-gradient(135deg, #0F273D 0%, #1E4568 50%, #2D608F 100%);
       --text-color: #FFFFFF;
@@ -29,7 +22,7 @@
       --card-bg: rgba(0,0,0,0.05);
       --accent: #3DDC97;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * { box-sizing: border-box; margin:0; padding:0; }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: var(--gradient);
@@ -38,7 +31,7 @@
       transition: background .3s, color .3s;
     }
     a { text-decoration: none; color: inherit; }
-    
+
     /* ─ NAVIGATION ─ */
     .top-nav {
       position: fixed; top: 0; left: 0; width: 100%;
@@ -54,17 +47,12 @@
 
     /* ─ ARTICLE STYLES ─ */
     .article-container {
-      max-width: 800px;
-      margin: 220px auto 2rem;
-      padding: 2rem;
-      background: var(--card-bg);
-      border-radius: 10px;
+      max-width: 800px; margin: 220px auto 2rem; padding: 2rem;
+      background: var(--card-bg); border-radius: 10px;
     }
     .article-container img.hero {
-  width: 100%;          /* fills container width */
-  max-height: 400px;    /* optional limit */
-  object-fit: contain;
-}
+      width: 100%; border-radius: 8px; margin-bottom: 1.5rem;
+    }
     .article-container h1 {
       font-size: 2.5rem; margin-bottom: .5rem; color: var(--accent);
     }
@@ -78,12 +66,6 @@
       margin-top: 1.5rem; margin-bottom: .75rem;
       color: var(--accent);
     }
-    .article-container ul {
-      margin-left: 1.5rem; margin-bottom: 1rem;
-    }
-    .article-container li {
-      margin-bottom: .5rem;
-    }
     .cta-link {
       display: inline-block; margin-top: 2rem;
       padding: .75rem 1.5rem; background: var(--accent);
@@ -91,25 +73,69 @@
     }
     .cta-link:hover { background: #35b787; }
 
-    /* ─ FOOTER & FADE-IN ─ */
+    /* ─ CALCULATOR TOGGLE & TOOL ─ */
+    #show-budget-tool {
+      display: inline-block; margin-top: 1.5rem;
+      padding: .75rem 1.5rem; background: var(--accent);
+      color: #0D1B2A; border: none; border-radius: 4px;
+      cursor: pointer; transition: background .3s;
+    }
+    #show-budget-tool:hover {
+      background: #35b787;
+    }
+
+    #budget-tool {
+      display: none;
+      background: var(--card-bg);
+      padding: 1.5rem;
+      margin-top: 1rem;
+      border-radius: 8px;
+    }
+    .fade-in-tool {
+      animation: fadeInTool .5s ease-out forwards;
+    }
+    @keyframes fadeInTool {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    #budget-tool input,
+    #budget-tool button {
+      padding: .5rem;
+      margin-right: .5rem;
+      margin-bottom: .75rem;
+      border: none;
+      border-radius: 4px;
+    }
+    #budget-tool button {
+      background: var(--accent);
+      color: #0D1B2A;
+      cursor: pointer;
+      transition: background .3s;
+    }
+    #budget-tool button:hover {
+      background: #35b787;
+    }
+    #budget-tool canvas {
+      max-width: 100%;
+      height: auto;
+      margin-top: 1rem;
+    }
+
+    /* ─ FOOTER ─ */
     footer {
       text-align: center; margin: 2rem 0; color: #AAAAAA;
     }
     footer a { color: var(--accent); }
-    .fade-in {
-      opacity: 0; transform: translateY(20px);
-      animation: fadeIn .8s forwards;
-    }
-    @keyframes fadeIn { to { opacity:1; transform:translateY(0); } }
 
     /* ─ RESPONSIVE ─ */
     @media (max-width: 768px) {
       .nav-left img { height: 100px; }
-      .nav-right a, #theme-toggle { font-size: 1rem; margin-left: 1rem; }
+      .nav-right a,#theme-toggle { font-size: 1rem; margin-left: 1rem; }
       .article-container { margin-top: 260px; padding: 1rem; }
     }
   </style>
 </head>
+
 <body data-theme="dark">
   <nav class="top-nav">
     <div class="nav-left">
@@ -127,45 +153,28 @@
 
   <article class="article-container fade-in" style="animation-delay:1.6s;">
     <img src="images/budgeting-hero.png" alt="Budgeting illustration" class="hero">
-    <h1>Budgeting Basics: Take Control of Your Money</h1>
-    <p class="date">July 11, 2025 • 4 min read</p>
-    
-    <p>Budgeting is more than just tracking your spending—it’s a plan that puts you in the driver’s seat of your finances. By knowing exactly where your money goes and setting clear goals, you can save for what matters, avoid debt traps, and build lasting wealth.</p>
-    
-    <h2>Why Budgeting Matters</h2>
-    <ul>
-      <li><strong>Clarity:</strong> See your income and expenses at a glance.</li>
-      <li><strong>Control:</strong> Decide your priorities instead of reacting to bills.</li>
-      <li><strong>Achieve Goals:</strong> Save for emergencies, travel, education, or retirement.</li>
-      <li><strong>Reduce Stress:</strong> Eliminate money worries by staying on track.</li>
-    </ul>
-    
-    <h2>5 Steps to Your First Budget</h2>
-    <ol>
-      <li><strong>Calculate Net Income:</strong> Add up all take-home pay (after taxes).</li>
-      <li><strong>List Expenses:</strong> Record fixed costs (rent, utilities) and variable costs (groceries, entertainment).</li>
-      <li><strong>Set Spending Categories:</strong> Allocate dollars to essentials, savings, debt repayment, and fun.</li>
-      <li><strong>Choose a Method:</strong>  
-        <ul>
-          <li><em>50/30/20 Rule:</em> 50% needs, 30% wants, 20% savings/debt.</li>
-          <li><em>Zero-Based:</em> Every dollar has a job—income minus expenses equals zero.</li>
-          <li><em>Envelope System:</em> Cash in envelopes for each category.</li>
-        </ul>
-      </li>
-      <li><strong>Track & Adjust:</strong> Review weekly and tweak categories as life changes.</li>
-    </ol>
-    
-    <h2>Tips for Sticking with It</h2>
-    <ul>
-      <li><strong>Automate Savings:</strong> Set up recurring transfers.</li>
-      <li><strong>Use Apps:</strong> Try Mintara’s built-in calculators and trackers.</li>
-      <li><strong>Build a Buffer:</strong> Include a “miscellaneous” category to avoid surprises.</li>
-      <li><strong>Celebrate Wins:</strong> Reward yourself when you hit milestones.</li>
-    </ul>
-    
-    <p>Starting a budget might feel tedious, but with the right tools and a clear plan, it quickly becomes second nature—and one of the most powerful habits for financial success.</p>
-    
-    <a href="videos.html" class="cta-link">Watch “Budgeting Basics” Video Lesson</a>
+    <h1>Budgeting Basics: Learn the Simple Steps to Create a Budget That Actually Works for You</h1>
+    <p class="date">July 11, 2025 • 6 min read</p>
+
+    <p>Creating a budget helps you allocate your income to your priorities, track your spending, and achieve your financial goals. Whether you’re just getting started or looking to refine your process, understanding the basics gives you clarity and control.</p>
+
+    <p>Begin by calculating your net income—what you take home after taxes and deductions. Next, list every expense, separating fixed costs like rent and utilities from variable costs like groceries and entertainment. With this foundation, you’ll know exactly how much you can allocate toward savings, debt repayment, and “fun money.”</p>
+
+    <a href="videos.html" class="cta-link">Watch “Budgeting Basics” Lesson</a>
+
+    <!-- Toggle to show the tool -->
+    <button id="show-budget-tool">Try Budgeting Basics Calculator</button>
+
+    <!-- Hidden calculator section -->
+    <div id="budget-tool">
+      <form id="budget-form">
+        <input type="number" id="bud-income"   placeholder="Net Income ($)" required>
+        <input type="number" id="bud-fixed"    placeholder="Fixed Expenses ($)" required>
+        <input type="number" id="bud-variable" placeholder="Variable Expenses ($)" required>
+        <button type="submit">Run Calculator</button>
+      </form>
+      <canvas id="bud-chart"></canvas>
+    </div>
   </article>
 
   <footer class="fade-in" style="animation-delay:2.0s;">
@@ -173,16 +182,52 @@
   </footer>
 
   <script>
-    // Theme toggle logic
+    // Theme toggle
     const toggle = document.getElementById('theme-toggle');
     const saved = localStorage.getItem('theme') || 'dark';
     document.documentElement.setAttribute('data-theme', saved);
-    toggle.textContent = saved==='dark'?'☀️':'🌙';
+    toggle.textContent = saved === 'dark' ? '☀️' : '🌙';
     toggle.addEventListener('click', () => {
-      const next = document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
       document.documentElement.setAttribute('data-theme', next);
       localStorage.setItem('theme', next);
-      toggle.textContent = next==='dark'?'☀️':'🌙';
+      toggle.textContent = next === 'dark' ? '☀️' : '🌙';
+    });
+
+    // Toggle visibility of the budgeting tool
+    document.getElementById('show-budget-tool').addEventListener('click', () => {
+      const tool = document.getElementById('budget-tool');
+      if (tool.style.display === 'block') {
+        tool.style.display = 'none';
+      } else {
+        tool.style.display = 'block';
+        tool.classList.add('fade-in-tool');
+      }
+    });
+
+    // Render the pie chart when the form is submitted
+    document.getElementById('budget-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const inc = +this['bud-income'].value,
+            fix = +this['bud-fixed'].value,
+            vari = +this['bud-variable'].value,
+            left = inc - fix - vari;
+
+      if (window.budChart) window.budChart.destroy();
+
+      window.budChart = new Chart(
+        document.getElementById('bud-chart'),
+        {
+          type: 'pie',
+          data: {
+            labels: ['Fixed','Variable','Remaining'],
+            datasets: [{
+              data: [fix, vari, left],
+              backgroundColor: ['#1E4568','#0F273D','#3DDC97']
+            }]
+          }
+        }
+      );
     });
   </script>
 </body>
