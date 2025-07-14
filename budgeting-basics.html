@@ -1,134 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Budgeting Basics – Mintara Finance Hub</title>
 
-  <!-- Chart.js for the calculator -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0J9QXJ8FLY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0J9QXJ8FLY');
+  </script>
 
   <style>
-    /* ─ THEME & RESET ─ */
+    /* THEME & RESET */
     :root {
-      --gradient: linear-gradient(135deg, #0F273D 0%, #1E4568 50%, #2D608F 100%);
-      --text-color: #FFF;
-      --card-bg: rgba(255,255,255,0.1);
+      --gradient: linear-gradient(135deg, #0F273D, #1E4568, #2D608F);
+      --text: #FFF;
+      --bg-card: rgba(255,255,255,0.1);
       --accent: #3DDC97;
     }
     [data-theme="light"] {
-      --gradient: linear-gradient(135deg, #F0F5F9 0%, #D0E1F9 100%);
-      --text-color: #0D1B2A;
-      --card-bg: rgba(0,0,0,0.05);
+      --gradient: linear-gradient(135deg, #F0F5F9, #D0E1F9);
+      --text: #0D1B2A;
+      --bg-card: rgba(0,0,0,0.05);
       --accent: #3DDC97;
     }
-    * { box-sizing: border-box; margin:0; padding:0; }
+    *{box-sizing:border-box;margin:0;padding:0;}
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: var(--gradient);
-      color: var(--text-color);
-      line-height: 1.6;
-      transition: background .3s, color .3s;
+      color: var(--text);
+      font-family:'Segoe UI',sans-serif;
+      line-height:1.6;
+      transition:background .3s,color .3s;
     }
-    a { text-decoration: none; color: inherit; }
+    a {color:inherit;text-decoration:none;}
 
-    /* ─ NAV ─ */
+    /* NAV */
     .top-nav {
-      position: fixed; top:0; left:0; width:100%;
-      display:flex; align-items:center; justify-content:space-between;
-      padding:1rem 2rem; background:transparent; z-index:100;
+      position:fixed;top:0;left:0;width:100%;
+      display:flex;justify-content:space-between;align-items:center;
+      padding:1rem 2rem;z-index:100;
     }
-    .nav-left img { height:125px; }
-    .nav-right a, #theme-toggle {
-      margin-left:1.5rem; font-size:1.1rem; cursor:pointer;
-      color:var(--text-color); transition:color .3s;
+    .nav-left img{height:125px;}
+    .nav-right a,#theme-toggle {
+      margin-left:1.5rem;font-size:1.1rem;cursor:pointer;
+      transition:color .3s;
     }
-    .nav-right a:hover { color:var(--accent); }
+    .nav-right a:hover{color:var(--accent);}
 
-    /* ─ ARTICLE ─ */
+    /* ARTICLE */
     .article-container {
-      max-width:800px; margin:220px auto 2rem; padding:2rem;
-      background:var(--card-bg); border-radius:10px;
+      max-width:800px;margin:220px auto 2rem;padding:2rem;
+      background:var(--bg-card);border-radius:10px;
     }
     .article-container img.hero {
-      display:block;
-      max-width:500px;    /* thinner */
-      width:100%;
-      height:auto;
-      margin:0 auto 1.5rem;
-      border-radius:8px;
+      width:100%;max-width:600px;height:auto;
+      margin:0 auto 1.5rem;display:block;border-radius:8px;
     }
     .article-container h1 {
-      font-size:2.5rem; margin-bottom:.5rem; color:var(--accent);
+      font-size:2.5rem;color:var(--accent);margin-bottom:.5rem;
     }
     .article-container .date {
-      font-size:.85rem; color:#CCC; margin-bottom:1.5rem;
+      font-size:.85rem;color:#CCC;margin-bottom:1.5rem;
     }
-    .article-container p {
-      margin-bottom:1rem;
+    .article-container p {margin-bottom:1rem;}
+    .article-container h2 {
+      margin-top:1.5rem;margin-bottom:.75rem;color:var(--accent);
     }
+    .article-container ul, .article-container ol {
+      margin-left:1.5rem;margin-bottom:1rem;
+    }
+    .article-container li {margin-bottom:.5rem;}
 
-    /* ─ BUTTONS ─ */
-    .cta-link,
-    #show-budget-tool {
-      display:block;
-      width:250px;
-      margin:1rem auto 0;
+    /* CTA */
+    .cta-link {
+      display:inline-block;margin-top:2rem;
       padding:.75rem 1.5rem;
-      font-size:1rem;
-      text-align:center;
-      background:var(--accent);
-      color:#0D1B2A;
-      border:none; border-radius:4px;
-      cursor:pointer; transition:background .3s;
+      background:var(--accent);color:#0D1B2A;
+      border-radius:4px;transition:background .3s;
     }
-    .cta-link:hover,
-    #show-budget-tool:hover {
-      background:#35b787;
-    }
+    .cta-link:hover{background:#35b787;}
 
-    /* ─ CALCULATOR ─ */
-    #budget-tool {
-      display:none;
-      background:var(--card-bg);
-      padding:1.5rem;
-      margin:1rem auto;
-      border-radius:8px;
-      max-width:500px;
-    }
-    .fade-in-tool {
-      animation: fadeInTool .5s ease-out forwards;
-    }
-    @keyframes fadeInTool {
-      from { opacity:0; transform:translateY(10px); }
-      to   { opacity:1; transform:translateY(0); }
-    }
-    #budget-tool input,
-    #budget-tool button {
-      padding:.5rem;
-      margin-right:.5rem;
-      margin-bottom:.75rem;
-      border:none; border-radius:4px;
-    }
-    #budget-tool canvas {
-      max-width:100%; height:auto; margin-top:1rem;
-    }
-
-    /* ─ FOOTER ─ */
+    /* FOOTER */
     footer {
-      text-align:center; margin:2rem 0; color:#AAA;
+      text-align:center;color:#AAA;margin:2rem 0;
     }
-    footer a { color:var(--accent); }
+    footer a{color:var(--accent);}
 
-    /* ─ RESPONSIVE ─ */
-    @media (max-width:768px) {
-      .nav-left img { height:100px; }
-      .nav-right a,#theme-toggle { font-size:1rem; margin-left:1rem; }
-      .article-container { margin-top:260px; padding:1rem; }
-      .cta-link,#show-budget-tool {
-        width:100%; max-width:300px;
-      }
-      #budget-tool { width:100%; padding:1rem; }
+    /* RESPONSIVE */
+    @media(max-width:768px){
+      .nav-left img{height:100px;}
+      .nav-right a,#theme-toggle{font-size:1rem;margin-left:1rem;}
+      .article-container{margin-top:260px;padding:1rem;}
     }
   </style>
 </head>
@@ -136,7 +102,7 @@
 <body data-theme="dark">
   <nav class="top-nav">
     <div class="nav-left">
-      <a href="index.html"><img src="images/logo.png" alt="Mintara logo"></a>
+      <a href="index.html"><img src="images/logo.png" alt="Logo"></a>
     </div>
     <div class="nav-right">
       <a href="index.html">Home</a>
@@ -149,28 +115,42 @@
   </nav>
 
   <article class="article-container fade-in" style="animation-delay:1.6s;">
-    <img src="images/budgeting-hero.png" alt="Budgeting illustration" class="hero">
-    <h1>Budgeting Basics: Learn the Simple Steps to Create a Budget That Actually Works</h1>
+    <img src="images/budgeting-hero.png" alt="Budgeting Illustration" class="hero">
+    <h1>Budgeting Basics: The Foundation of Your Financial Journey</h1>
     <p class="date">July 11, 2025 • 6 min read</p>
 
-    <p>Creating a budget helps you allocate your income to your true priorities, track your spending habits, and steadily work toward your goals. Whether you’re just getting started or looking to refine your existing process, understanding the core steps gives you both clarity and control.</p>
+    <p>Budgeting is the cornerstone of effective money management. By mapping out where every dollar goes, you gain clarity on your spending, control over your cash flow, and confidence in your financial decisions. In this guide, we’ll walk through each essential step to build a budget that works for your lifestyle.</p>
 
-    <p>First, calculate your net income—what lands in your account after taxes, retirement contributions, and other deductions. Then list every expense, separating fixed costs like rent and utilities from variable costs like groceries, entertainment, and subscriptions. This complete picture shows how much you really have to set aside for savings, debt repayment, and yes, even “fun money.”</p>
+    <h2>Why Budgeting Matters</h2>
+    <ul>
+      <li><strong>Awareness:</strong> See your income and expenses in one place to identify leaks and opportunities.</li>
+      <li><strong>Goal Alignment:</strong> Allocate funds toward what matters most—emergency savings, debt payoff, or big purchases.</li>
+      <li><strong>Stress Reduction:</strong> Knowing exactly where your money goes eliminates the anxiety of the unknown.</li>
+    </ul>
 
-    <p>To keep your budget on track, choose a method that fits your style—whether it’s the simple 50/30/20 split, detailed zero-based budgeting, or the tactile envelope system—and revisit your numbers weekly or monthly to adjust as life changes.</p>
+    <h2>Step 1: Calculate Your Net Income</h2>
+    <p>Your net income is what you actually take home after taxes, retirement contributions, and other deductions. If you are paid a salary, use your paystub. If you are hourly, multiply your hourly rate by hours worked, then subtract estimated taxes. This figure is your monthly budget cap—every dollar you assign must come from this total.</p>
+
+    <h2>Step 2: Track Every Expense</h2>
+    <p>Next, list all your expenses. Break them into fixed expenses—rent, insurance, subscriptions—and variable expenses—groceries, dining out, entertainment. Track each transaction for one month using a spreadsheet, notebook, or budgeting app. Consistency is key: small purchases add up, so include every coffee, snack, and online purchase.</p>
+
+    <h2>Step 3: Choose Your Budgeting Method</h2>
+    <p>Pick the framework that fits your style:</p>
+    <ol>
+      <li><strong>50/30/20 Rule:</strong> Allocate 50% of your net to needs, 30% to wants, and 20% to savings or debt.</li>
+      <li><strong>Zero-Based Budgeting:</strong> Assign every dollar a job until income minus expenses equals zero.</li>
+      <li><strong>Envelope System:</strong> Use cash in labeled envelopes for each category to limit overspending.</li>
+    </ol>
+
+    <h2>Tips for Sticking With Your Budget</h2>
+    <ul>
+      <li><strong>Automate:</strong> Set up recurring transfers to savings and autopay your bills.</li>
+      <li><strong>Review Weekly:</strong> Spend five minutes each week checking your progress and adjusting.</li>
+      <li><strong>Visualize Progress:</strong> Use charts or apps that display your spending versus plan.</li>
+      <li><strong>Reward Milestones:</strong> Celebrate when you hit 25%, 50%, and 100% of your savings goals.</li>
+    </ul>
 
     <a href="videos.html" class="cta-link">Watch “Budgeting Basics” Lesson</a>
-    <button id="show-budget-tool">Try Budgeting Basics Calculator</button>
-
-    <div id="budget-tool">
-      <form id="budget-form">
-        <input type="number" id="bud-income"   placeholder="Net Income ($)" required>
-        <input type="number" id="bud-fixed"    placeholder="Fixed Expenses ($)" required>
-        <input type="number" id="bud-variable" placeholder="Variable Expenses ($)" required>
-        <button type="submit">Run Calculator</button>
-      </form>
-      <canvas id="bud-chart"></canvas>
-    </div>
   </article>
 
   <footer class="fade-in" style="animation-delay:2.0s;">
@@ -188,40 +168,6 @@
       document.documentElement.setAttribute('data-theme', next);
       localStorage.setItem('theme', next);
       toggle.textContent = next === 'dark' ? '☀️' : '🌙';
-    });
-
-    // Show/hide the calculator
-    document.getElementById('show-budget-tool').addEventListener('click', () => {
-      const tool = document.getElementById('budget-tool');
-      if (tool.style.display === 'block') {
-        tool.style.display = 'none';
-      } else {
-        tool.style.display = 'block';
-        tool.classList.add('fade-in-tool');
-      }
-    });
-
-    // Render pie chart
-    document.getElementById('budget-form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const inc = +this['bud-income'].value,
-            fix = +this['bud-fixed'].value,
-            vari = +this['bud-variable'].value,
-            left = inc - fix - vari;
-      if (window.budChart) window.budChart.destroy();
-      window.budChart = new Chart(
-        document.getElementById('bud-chart'),
-        {
-          type: 'pie',
-          data: {
-            labels: ['Fixed','Variable','Remaining'],
-            datasets: [{
-              data: [fix, vari, left],
-              backgroundColor: ['#1E4568','#0F273D','#3DDC97']
-            }]
-          }
-        }
-      );
     });
   </script>
 </body>
