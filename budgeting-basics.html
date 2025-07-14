@@ -22,7 +22,7 @@
       --card-bg: rgba(0,0,0,0.05);
       --accent: #3DDC97;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * { box-sizing: border-box; margin:0; padding:0; }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: var(--gradient);
@@ -32,120 +32,100 @@
     }
     a { text-decoration: none; color: inherit; }
 
-    /* NAV */
+    /* NAVIGATION */
     .top-nav {
-      position: fixed; top: 0; left: 0; width: 100%;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1rem 2rem; z-index: 100;
+      position: fixed; top:0; left:0; width:100%;
+      display:flex; align-items:center; justify-content:space-between;
+      padding:1rem 2rem; z-index:100;
     }
-    .nav-left img { height: 125px; }
+    .nav-left img { height:125px; }
     .nav-right a, #theme-toggle {
-      margin-left: 1.5rem; font-size: 1.1rem; cursor: pointer;
+      margin-left:1.5rem; font-size:1.1rem; cursor:pointer;
       transition: color .3s;
     }
     .nav-right a:hover { color: var(--accent); }
 
-    /* ARTICLE */
+    /* ARTICLE STYLES */
     .article-container {
-      max-width: 800px; margin: 220px auto 2rem; padding: 2rem;
-      background: var(--card-bg); border-radius: 10px;
+      max-width:800px; margin:220px auto 2rem; padding:2rem;
+      background:var(--card-bg); border-radius:10px;
     }
     .article-container img.hero {
-      display: block;
-      max-width: 500px;
-      width: 100%;
-      height: auto;
-      margin: 0 auto 1.5rem;
-      border-radius: 8px;
+      width:100%; max-width:600px; height:auto;
+      margin:0 auto 1.5rem; display:block; border-radius:8px;
     }
     .article-container h1 {
-      font-size: 2.5rem; margin-bottom: .5rem; color: var(--accent);
+      font-size:2.5rem; margin-bottom:.5rem; color:var(--accent);
     }
     .article-container .date {
-      font-size: .85rem; color: #CCCCCC; margin-bottom: 1.5rem;
+      font-size:.85rem; color:#CCCCCC; margin-bottom:1.5rem;
     }
-    .article-container p {
-      margin-bottom: 1rem;
-    }
+    .article-container p { margin-bottom:1rem; }
     .article-container h2 {
-      margin-top: 1.5rem; margin-bottom: .75rem; color: var(--accent);
+      margin-top:1.5rem; margin-bottom:.75rem; color:var(--accent);
     }
-    .article-container ul,
-    .article-container ol {
-      margin-left: 1.5rem; margin-bottom: 1rem;
+    .article-container ul, .article-container ol {
+      margin-left:1.5rem; margin-bottom:1rem;
     }
-    .article-container li {
-      margin-bottom: .5rem;
-    }
+    .article-container li { margin-bottom:.5rem; }
 
-    /* BUTTON (both CTA and calculator toggle) */
+    /* BUTTON STYLES */
     .cta-link,
     #show-budget-tool {
-      display: block;
-      width: 250px;
-      margin: 1rem auto 0;
-      padding: .75rem 1.5rem;
-      font-size: 1rem;
-      text-align: center;
-      background: var(--accent);
-      color: #0D1B2A;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: background .3s;
+      display:block;
+      width:250px;
+      margin:1rem auto 0;
+      padding:.75rem 1.5rem;
+      font-size:1rem;
+      text-align:center;
+      background:var(--accent);
+      color:#0D1B2A;
+      border:none; border-radius:4px;
+      cursor:pointer; transition:background .3s;
     }
     .cta-link:hover,
     #show-budget-tool:hover {
-      background: #35b787;
+      background:#35b787;
     }
 
     /* CALCULATOR TOOL */
     #budget-tool {
-      display: none;
-      background: var(--card-bg);
-      padding: 1.5rem;
-      margin: 1rem auto;
-      border-radius: 8px;
-      max-width: 500px;
+      display:none;
+      background:var(--card-bg);
+      padding:1.5rem;
+      margin:1rem auto;
+      border-radius:8px;
+      max-width:500px;
     }
     .fade-in-tool {
-      animation: fadeInTool .5s ease-out forwards;
+      animation:fadeInTool .5s ease-out forwards;
     }
     @keyframes fadeInTool {
-      from { opacity: 0; transform: translateY(10px); }
-      to   { opacity: 1; transform: translateY(0); }
+      from { opacity:0; transform:translateY(10px); }
+      to   { opacity:1; transform:translateY(0); }
     }
     #budget-tool input,
     #budget-tool button {
-      padding: .5rem;
-      margin-right: .5rem;
-      margin-bottom: .75rem;
-      border: none;
-      border-radius: 4px;
+      padding:.5rem; margin-right:.5rem; margin-bottom:.75rem;
+      border:none; border-radius:4px;
     }
     #budget-tool canvas {
-      max-width: 100%;
-      height: auto;
-      margin-top: 1rem;
+      max-width:100%; height:auto; margin-top:1rem;
     }
 
     /* FOOTER */
     footer {
-      text-align: center; margin: 2rem 0; color: #AAAAAA;
+      text-align:center; margin:2rem 0; color:#AAAAAA;
     }
-    footer a { color: var(--accent); }
+    footer a { color:var(--accent); }
 
     /* RESPONSIVE */
-    @media (max-width: 768px) {
-      .nav-left img { height: 100px; }
-      .nav-right a, #theme-toggle { font-size: 1rem; margin-left: 1rem; }
-      .article-container { margin-top: 260px; padding: 1rem; }
-      .cta-link, #show-budget-tool {
-        width: 100%; max-width: 300px;
-      }
-      #budget-tool {
-        width: 100%; padding: 1rem;
-      }
+    @media(max-width:768px){
+      .nav-left img{height:100px;}
+      .nav-right a,#theme-toggle{font-size:1rem;margin-left:1rem;}
+      .article-container{margin-top:260px;padding:1rem;}
+      .cta-link,#show-budget-tool{width:100%;max-width:300px;}
+      #budget-tool{width:100%;padding:1rem;}
     }
   </style>
 </head>
@@ -166,43 +146,42 @@
   </nav>
 
   <article class="article-container fade-in" style="animation-delay:1.6s;">
-    <img src="images/budgeting-hero.png" alt="Budgeting illustration" class="hero">
-    <h1>Budgeting Basics: Learn the Simple Steps to Create a Budget That Actually Works for You</h1>
+    <img src="images/budgeting-hero.png" alt="Budgeting Illustration" class="hero">
+    <h1>Budgeting Basics: The Foundation of Your Financial Journey</h1>
     <p class="date">July 11, 2025 • 6 min read</p>
 
-    <p>Creating a budget helps you allocate your income to your true priorities, track your spending habits, and steadily work toward your goals. Whether you’re just getting started or looking to refine your process, understanding the core steps gives you clarity and control.</p>
-
-    <p>First, calculate your net income—what lands in your account after taxes, retirement contributions, and other deductions. Then list every expense, separating fixed costs like rent and utilities from variable costs like groceries, entertainment, and subscriptions. This complete picture shows how much you really have to set aside for savings, debt repayment, and even “fun money.”</p>
+    <p>Budgeting is the cornerstone of effective money management. By mapping out where every dollar goes, you gain clarity on your spending, control over your cash flow, and confidence in your financial decisions. In this guide, we’ll walk through each essential step to build a budget that works for your lifestyle.</p>
 
     <h2>Why Budgeting Matters</h2>
     <ul>
-      <li><strong>Awareness:</strong> See your full cash flow in one place.</li>
-      <li><strong>Goal Alignment:</strong> Direct money toward what matters most.</li>
-      <li><strong>Peace of Mind:</strong> Eliminate financial guesswork and stress.</li>
+      <li><strong>Awareness:</strong> See your income and expenses in one place to identify leaks and opportunities.</li>
+      <li><strong>Goal Alignment:</strong> Allocate funds toward what matters most—emergency savings, debt payoff, or big purchases.</li>
+      <li><strong>Stress Reduction:</strong> Knowing exactly where your money goes eliminates the anxiety of the unknown.</li>
     </ul>
 
-    <h2>Step 1: Net Income</h2>
-    <p>Use your pay stub or hourly rate to find your take-home pay. This is the total you’ll work with each month.</p>
+    <h2>Step 1: Calculate Your Net Income</h2>
+    <p>Your net income is what you actually take home after taxes, retirement contributions, and other deductions. If you are paid a salary, use your paystub. If you are hourly, multiply your hourly rate by hours worked, then subtract estimated taxes. This figure is your monthly budget cap—every dollar you assign must come from this total.</p>
 
-    <h2>Step 2: Expense Tracking</h2>
-    <p>Record every expense—fixed and variable—so nothing slips through the cracks.</p>
+    <h2>Step 2: Track Every Expense</h2>
+    <p>Next, list all your expenses. Break them into fixed expenses—rent, insurance, subscriptions—and variable expenses—groceries, dining out, entertainment. Track each transaction for one month using a spreadsheet, notebook, or budgeting app. Consistency is key: small purchases add up, so include every coffee, snack, and online purchase.</p>
 
-    <h2>Step 3: Choose a Method</h2>
+    <h2>Step 3: Choose Your Budgeting Method</h2>
     <ol>
-      <li>50/30/20 Rule</li>
-      <li>Zero-Based Budget</li>
-      <li>Envelope System</li>
+      <li><strong>50/30/20 Rule:</strong> Allocate 50% of your net income to needs, 30% to wants, and 20% to savings or debt repayment.</li>
+      <li><strong>Zero-Based Budgeting:</strong> Assign every dollar a job until your income minus expenses equals zero.</li>
+      <li><strong>Envelope System:</strong> Use cash in labeled envelopes for each category to limit overspending.</li>
     </ol>
 
-    <h2>Tips for Success</h2>
+    <h2>Tips for Sticking With Your Budget</h2>
     <ul>
-      <li>Automate transfers and bill pay</li>
-      <li>Review your budget weekly</li>
-      <li>Celebrate milestones</li>
+      <li><strong>Automate:</strong> Set up recurring transfers to savings and autopay your bills.</li>
+      <li><strong>Review Weekly:</strong> Spend five minutes each week checking your progress and adjusting.</li>
+      <li><strong>Visualize Progress:</strong> Use charts or apps that display your spending versus plan.</li>
+      <li><strong>Reward Milestones:</strong> Celebrate when you hit 25%, 50%, and 100% of your savings goals.</li>
     </ul>
 
     <a href="videos.html" class="cta-link">Watch “Budgeting Basics” Lesson</a>
-    <button id="show-budget-tool" class="cta-link">Try Budgeting Basics Calculator</button>
+    <button id="show-budget-tool">Try Budgeting Basics Calculator</button>
 
     <div id="budget-tool">
       <form id="budget-form">
@@ -243,7 +222,7 @@
       }
     });
 
-    // Render the pie chart
+    // Render pie chart
     document.getElementById('budget-form').addEventListener('submit', function(e) {
       e.preventDefault();
       const inc = +this['bud-income'].value,
