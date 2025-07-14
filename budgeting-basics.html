@@ -51,8 +51,12 @@
       background: var(--card-bg); border-radius: 10px;
     }
     .article-container img.hero {
-      width: 100%; max-width: 600px; height: auto;
-      margin: 0 auto 1.5rem; display: block; border-radius: 8px;
+      display: block;
+      width: 100%;
+      max-width: 400px;     /* reduced from 600px to 400px */
+      height: auto;
+      margin: 0 auto 1.5rem;
+      border-radius: 8px;
     }
     .article-container h1 {
       font-size: 2.5rem; margin-bottom: .5rem; color: var(--accent);
@@ -120,12 +124,12 @@
     footer a { color: var(--accent); }
 
     /* RESPONSIVE */
-    @media(max-width:768px) {
-      .nav-left img { height: 100px; }
-      .nav-right a, #theme-toggle { font-size: 1rem; margin-left: 1rem; }
-      .article-container { margin-top: 260px; padding: 1rem; }
-      .cta-link, #show-budget-tool { width: 100%; max-width: 300px; }
-      #budget-tool { width: 100%; padding: 1rem; }
+    @media(max-width:768px){
+      .nav-left img{height:100px;}
+      .nav-right a,#theme-toggle{font-size:1rem;margin-left:1rem;}
+      .article-container{margin-top:260px;padding:1rem;}
+      .cta-link,#show-budget-tool{width:100%;max-width:300px;}
+      #budget-tool{width:100%;padding:1rem;}
     }
   </style>
 </head>
@@ -180,16 +184,13 @@
       <li><strong>Reward Milestones:</strong> Celebrate when you hit 25%, 50%, and 100% of your savings goals.</li>
     </ul>
 
-    <!-- your existing video link -->
     <a href="videos.html" class="cta-link">Watch “Budgeting Basics” Lesson</a>
-    <!-- new toggle button, identical in style -->
     <button id="show-budget-tool" class="cta-link">Try Budgeting Basics Calculator</button>
 
-    <!-- hidden calculator -->
     <div id="budget-tool">
       <form id="budget-form">
-        <input type="number" id="bud-income" placeholder="Net Income ($)" required>
-        <input type="number" id="bud-fixed"  placeholder="Fixed Expenses ($)" required>
+        <input type="number" id="bud-income"   placeholder="Net Income ($)" required>
+        <input type="number" id="bud-fixed"    placeholder="Fixed Expenses ($)" required>
         <input type="number" id="bud-variable" placeholder="Variable Expenses ($)" required>
         <button type="submit">Run Calculator</button>
       </form>
