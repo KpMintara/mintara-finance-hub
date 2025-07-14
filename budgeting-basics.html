@@ -5,127 +5,96 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Budgeting Basics – Mintara Finance Hub</title>
 
-  <!-- Chart.js for the calculator -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0J9QXJ8FLY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0J9QXJ8FLY');
+  </script>
 
   <style>
     /* THEME & RESET */
     :root {
-      --gradient: linear-gradient(135deg, #0F273D 0%, #1E4568 50%, #2D608F 100%);
-      --text-color: #FFFFFF;
-      --card-bg: rgba(255,255,255,0.1);
+      --gradient: linear-gradient(135deg, #0F273D, #1E4568, #2D608F);
+      --text: #FFF;
+      --bg-card: rgba(255,255,255,0.1);
       --accent: #3DDC97;
     }
     [data-theme="light"] {
-      --gradient: linear-gradient(135deg, #F0F5F9 0%, #D0E1F9 100%);
-      --text-color: #0D1B2A;
-      --card-bg: rgba(0,0,0,0.05);
+      --gradient: linear-gradient(135deg, #F0F5F9, #D0E1F9);
+      --text: #0D1B2A;
+      --bg-card: rgba(0,0,0,0.05);
       --accent: #3DDC97;
     }
-    * { box-sizing: border-box; margin:0; padding:0; }
+    *{box-sizing:border-box;margin:0;padding:0;}
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: var(--gradient);
-      color: var(--text-color);
-      line-height: 1.6;
-      transition: background .3s, color .3s;
+      color: var(--text);
+      font-family:'Segoe UI',sans-serif;
+      line-height:1.6;
+      transition:background .3s,color .3s;
     }
-    a { text-decoration: none; color: inherit; }
+    a {color:inherit;text-decoration:none;}
 
-    /* NAVIGATION */
+    /* NAV */
     .top-nav {
-      position: fixed; top:0; left:0; width:100%;
-      display:flex; align-items:center; justify-content:space-between;
-      padding:1rem 2rem; z-index:100;
+      position:fixed;top:0;left:0;width:100%;
+      display:flex;justify-content:space-between;align-items:center;
+      padding:1rem 2rem;z-index:100;
     }
-    .nav-left img { height:125px; }
-    .nav-right a, #theme-toggle {
-      margin-left:1.5rem; font-size:1.1rem; cursor:pointer;
-      transition: color .3s;
+    .nav-left img{height:125px;}
+    .nav-right a,#theme-toggle {
+      margin-left:1.5rem;font-size:1.1rem;cursor:pointer;
+      transition:color .3s;
     }
-    .nav-right a:hover { color: var(--accent); }
+    .nav-right a:hover{color:var(--accent);}
 
-    /* ARTICLE STYLES */
+    /* ARTICLE */
     .article-container {
-      max-width:800px; margin:220px auto 2rem; padding:2rem;
-      background:var(--card-bg); border-radius:10px;
+      max-width:800px;margin:220px auto 2rem;padding:2rem;
+      background:var(--bg-card);border-radius:10px;
     }
     .article-container img.hero {
-      width:100%; max-width:600px; height:auto;
-      margin:0 auto 1.5rem; display:block; border-radius:8px;
+      width:100%;max-width:600px;height:auto;
+      margin:0 auto 1.5rem;display:block;border-radius:8px;
     }
     .article-container h1 {
-      font-size:2.5rem; margin-bottom:.5rem; color:var(--accent);
+      font-size:2.5rem;color:var(--accent);margin-bottom:.5rem;
     }
     .article-container .date {
-      font-size:.85rem; color:#CCCCCC; margin-bottom:1.5rem;
+      font-size:.85rem;color:#CCC;margin-bottom:1.5rem;
     }
-    .article-container p { margin-bottom:1rem; }
+    .article-container p {margin-bottom:1rem;}
     .article-container h2 {
-      margin-top:1.5rem; margin-bottom:.75rem; color:var(--accent);
+      margin-top:1.5rem;margin-bottom:.75rem;color:var(--accent);
     }
     .article-container ul, .article-container ol {
-      margin-left:1.5rem; margin-bottom:1rem;
+      margin-left:1.5rem;margin-bottom:1rem;
     }
-    .article-container li { margin-bottom:.5rem; }
+    .article-container li {margin-bottom:.5rem;}
 
-    /* BUTTON STYLES */
-    .cta-link,
-    #show-budget-tool {
-      display:block;
-      width:250px;
-      margin:1rem auto 0;
+    /* CTA */
+    .cta-link {
+      display:inline-block;margin-top:2rem;
       padding:.75rem 1.5rem;
-      font-size:1rem;
-      text-align:center;
-      background:var(--accent);
-      color:#0D1B2A;
-      border:none; border-radius:4px;
-      cursor:pointer; transition:background .3s;
+      background:var(--accent);color:#0D1B2A;
+      border-radius:4px;transition:background .3s;
     }
-    .cta-link:hover,
-    #show-budget-tool:hover {
-      background:#35b787;
-    }
-
-    /* CALCULATOR TOOL */
-    #budget-tool {
-      display:none;
-      background:var(--card-bg);
-      padding:1.5rem;
-      margin:1rem auto;
-      border-radius:8px;
-      max-width:500px;
-    }
-    .fade-in-tool {
-      animation:fadeInTool .5s ease-out forwards;
-    }
-    @keyframes fadeInTool {
-      from { opacity:0; transform:translateY(10px); }
-      to   { opacity:1; transform:translateY(0); }
-    }
-    #budget-tool input,
-    #budget-tool button {
-      padding:.5rem; margin-right:.5rem; margin-bottom:.75rem;
-      border:none; border-radius:4px;
-    }
-    #budget-tool canvas {
-      max-width:100%; height:auto; margin-top:1rem;
-    }
+    .cta-link:hover{background:#35b787;}
 
     /* FOOTER */
     footer {
-      text-align:center; margin:2rem 0; color:#AAAAAA;
+      text-align:center;color:#AAA;margin:2rem 0;
     }
-    footer a { color:var(--accent); }
+    footer a{color:var(--accent);}
 
     /* RESPONSIVE */
     @media(max-width:768px){
       .nav-left img{height:100px;}
       .nav-right a,#theme-toggle{font-size:1rem;margin-left:1rem;}
       .article-container{margin-top:260px;padding:1rem;}
-      .cta-link,#show-budget-tool{width:100%;max-width:300px;}
-      #budget-tool{width:100%;padding:1rem;}
     }
   </style>
 </head>
@@ -133,7 +102,7 @@
 <body data-theme="dark">
   <nav class="top-nav">
     <div class="nav-left">
-      <a href="index.html"><img src="images/logo.png" alt="Mintara logo"></a>
+      <a href="index.html"><img src="images/logo.png" alt="Logo"></a>
     </div>
     <div class="nav-right">
       <a href="index.html">Home</a>
@@ -166,9 +135,10 @@
     <p>Next, list all your expenses. Break them into fixed expenses—rent, insurance, subscriptions—and variable expenses—groceries, dining out, entertainment. Track each transaction for one month using a spreadsheet, notebook, or budgeting app. Consistency is key: small purchases add up, so include every coffee, snack, and online purchase.</p>
 
     <h2>Step 3: Choose Your Budgeting Method</h2>
+    <p>Pick the framework that fits your style:</p>
     <ol>
-      <li><strong>50/30/20 Rule:</strong> Allocate 50% of your net income to needs, 30% to wants, and 20% to savings or debt repayment.</li>
-      <li><strong>Zero-Based Budgeting:</strong> Assign every dollar a job until your income minus expenses equals zero.</li>
+      <li><strong>50/30/20 Rule:</strong> Allocate 50% of your net to needs, 30% to wants, and 20% to savings or debt.</li>
+      <li><strong>Zero-Based Budgeting:</strong> Assign every dollar a job until income minus expenses equals zero.</li>
       <li><strong>Envelope System:</strong> Use cash in labeled envelopes for each category to limit overspending.</li>
     </ol>
 
@@ -181,17 +151,6 @@
     </ul>
 
     <a href="videos.html" class="cta-link">Watch “Budgeting Basics” Lesson</a>
-    <button id="show-budget-tool">Try Budgeting Basics Calculator</button>
-
-    <div id="budget-tool">
-      <form id="budget-form">
-        <input type="number" id="bud-income"   placeholder="Net Income ($)" required>
-        <input type="number" id="bud-fixed"    placeholder="Fixed Expenses ($)" required>
-        <input type="number" id="bud-variable" placeholder="Variable Expenses ($)" required>
-        <button type="submit">Run Calculator</button>
-      </form>
-      <canvas id="bud-chart"></canvas>
-    </div>
   </article>
 
   <footer class="fade-in" style="animation-delay:2.0s;">
@@ -209,40 +168,6 @@
       document.documentElement.setAttribute('data-theme', next);
       localStorage.setItem('theme', next);
       toggle.textContent = next === 'dark' ? '☀️' : '🌙';
-    });
-
-    // Show/hide the calculator
-    document.getElementById('show-budget-tool').addEventListener('click', () => {
-      const tool = document.getElementById('budget-tool');
-      if (tool.style.display === 'block') {
-        tool.style.display = 'none';
-      } else {
-        tool.style.display = 'block';
-        tool.classList.add('fade-in-tool');
-      }
-    });
-
-    // Render pie chart
-    document.getElementById('budget-form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const inc = +this['bud-income'].value,
-            fix = +this['bud-fixed'].value,
-            vari = +this['bud-variable'].value,
-            left = inc - fix - vari;
-      if (window.budChart) window.budChart.destroy();
-      window.budChart = new Chart(
-        document.getElementById('bud-chart'),
-        {
-          type: 'pie',
-          data: {
-            labels: ['Fixed','Variable','Remaining'],
-            datasets: [{
-              data: [fix, vari, left],
-              backgroundColor: ['#1E4568','#0F273D','#3DDC97']
-            }]
-          }
-        }
-      );
     });
   </script>
 </body>
