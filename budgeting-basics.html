@@ -151,6 +151,17 @@
     </ul>
 
     <a href="videos.html" class="cta-link">Watch “Budgeting Basics” Lesson</a>
+     <button id="show-budget-tool">Try Budgeting Basics Calculator</button>
+
+    <div id="budget-tool">
+      <form id="budget-form">
+        <input type="number" id="bud-income"   placeholder="Net Income ($)" required>
+        <input type="number" id="bud-fixed"    placeholder="Fixed Expenses ($)" required>
+        <input type="number" id="bud-variable" placeholder="Variable Expenses ($)" required>
+        <button type="submit">Run Calculator</button>
+      </form>
+      <canvas id="bud-chart"></canvas>
+    </div>
   </article>
 
   <footer class="fade-in" style="animation-delay:2.0s;">
