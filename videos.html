@@ -197,7 +197,7 @@
       <div id="saving-quiz-result" class="quiz-result" role="status" aria-live="polite"></div>
     </section>
 
-    <!-- Other sections… -->
+    <!-- Introduction to Investing Section -->
     <section class="video-section fade-in" style="animation-delay:1.0s;">
       <h2>Introduction to Investing</h2>
       <div class="video-grid">
@@ -206,8 +206,18 @@
         <div class="video-card"></div>
         <div class="video-card"></div>
       </div>
+      <button
+        id="start-investing-quiz"
+        class="quiz-start fade-in"
+        data-aos="fade-up"
+        data-aos-delay="400"
+        style="animation-delay:1.2s;"
+      >Start Investing Quiz</button>
+      <form id="investing-quiz-form" class="quiz-form"></form>
+      <div id="investing-quiz-result" class="quiz-result" role="status" aria-live="polite"></div>
     </section>
 
+    <!-- Credit & Debt Management Section -->
     <section class="video-section fade-in" style="animation-delay:1.2s;">
       <h2>Credit &amp; Debt Management</h2>
       <div class="video-grid">
@@ -216,6 +226,15 @@
         <div class="video-card"></div>
         <div class="video-card"></div>
       </div>
+      <button
+        id="start-debt-quiz"
+        class="quiz-start fade-in"
+        data-aos="fade-up"
+        data-aos-delay="500"
+        style="animation-delay:1.3s;"
+      >Start Credit & Debt Quiz</button>
+      <form id="debt-quiz-form" class="quiz-form"></form>
+      <div id="debt-quiz-result" class="quiz-result" role="status" aria-live="polite"></div>
     </section>
   </main>
 
@@ -240,7 +259,7 @@
       // Initialize AOS
       AOS.init({ duration: 300, once: true });
 
-      // Common helper to pick 5 questions/day
+      // Helper to pick 5 questions/day
       function getTodaysQuestions(pool) {
         const now = new Date();
         const start = new Date(now.getFullYear(),0,0);
@@ -249,8 +268,9 @@
         return Array.from({length:5},(_,i)=>pool[(idx+i)%pool.length]);
       }
 
-      // Budgeting question pool
+      // Question pools
       const budgetingPool = [
+        /* same as before… */
         { q: "You earn $3,000 monthly. According to the 50/30/20 rule, how much should go to savings?", options:["$600","$900","$1,500","$2,100"], answer:"600" },
         { q: "Which is best for growing an emergency fund?", options:["Checking account","High‑yield savings","Stocks","Money market"], answer:"highyieldsavings" },
         { q: "True or False: You should pay off credit card debt before mortgage if APR is higher.", options:["True","False"], answer:"true" },
@@ -263,8 +283,8 @@
         { q: "Remaining covers:", options:["Savings & debt","Entertainment","Investments","Bills"], answer:"savingsanddebt" }
       ];
 
-      // Saving strategies question pool
       const savingPool = [
+        /* same as before… */
         { q: "What’s the main benefit of a high‑yield savings account?", options:["Higher interest","Lower fees","FDIC insurance","Unlimited withdrawals"], answer:"higherinterest" },
         { q: "True or False: You should automate savings transfer each payday.", options:["True","False"], answer:"true" },
         { q: "Which tool helps track spending habits?", options:["Budget app","Loan calculator","Stock screener","Mortgage broker"], answer:"budgetapp" },
@@ -277,12 +297,41 @@
         { q: "A sinking fund is for:", options:["Specific future expense","Daily expenses","Credit card payoff","Investment"], answer:"specificfutureexpense" }
       ];
 
+      const investingPool = [
+        { q: "Diversification primarily helps to:", options:["Reduce risk","Increase fees","Guarantee returns","Eliminate taxes"], answer:"reducerisk" },
+        { q: "True or False: Stocks always outperform bonds over any period.", options:["True","False"], answer:"false" },
+        { q: "A dollar-cost averaging strategy means:", options:["Invest fixed amount regularly","Invest lump sum once","Sell when markets rise","Avoid reinvestment"], answer:"investfixedamountregularly" },
+        { q: "ETF stands for:", options:["Exchange‑Traded Fund","Equity Tax Fee","Estimated Trading Forecast","Euro Treasury Fund"], answer:"exchangetradedfund" },
+        { q: "Which is considered a safer investment?", options:["Government bonds","High‑growth tech stocks","Cryptocurrency","Venture capital"], answer:"governmentbonds" },
+        { q: "True or False: High P/E ratio always means overvalued stock.", options:["True","False"], answer:"false" },
+        { q: "Compound interest is best described as:", options:["Earnings on earnings","Simple interest only","Tax deduction","Expense ratio"], answer:"earningsonearnings" },
+        { q: "REITs invest primarily in:", options:["Real estate","Retail products","Technology","Commodities"], answer:"realestate" },
+        { q: "True or False: Mutual funds trade throughout the day like stocks.", options:["True","False"], answer:"false" },
+        { q: "An investor’s time horizon affects:", options:["Risk tolerance","Brand loyalty","Income level","Credit score"], answer:"risktolerance" }
+      ];
+
+      const debtPool = [
+        { q: "APR stands for:", options:["Annual Percentage Rate","Average Payment Rate","Annual Profit Ratio","Adjusted Payment Rate"], answer:"annualpercentagerate" },
+        { q: "True or False: Revolving credit must be paid in full monthly.", options:["True","False"], answer:"false" },
+        { q: "Which strategy minimizes interest paid fastest?", options:["Snowball","Avalanche","Random","Lump‑sum only"], answer:"avalanche" },
+        { q: "Credit utilization ratio should stay below:", options:["30%","50%","70%","90%"], answer:"30" },
+        { q: "A secured loan is backed by:", options:["Collateral","Credit score","Income","Co‑signer"], answer:"collateral" },
+        { q: "True or False: Debt consolidation can lower monthly payments.", options:["True","False"], answer:"true" },
+        { q: "Late payments negatively affect:", options:["Credit score","Savings rate","Mortgage rate","Investment returns"], answer:"creditscore" },
+        { q: "A balance transfer card often offers:", options:["0% intro APR","Higher fees","Higher interest","No credit check"], answer:"0%intropapr" },
+        { q: "Minimum payment covers mostly:", options:["Interest","Principal","Equity","Investment"], answer:"interest" },
+        { q: "Debt-to-income ratio compares debt against:", options:["Income","Expenses","Assets","Credit score"], answer:"income" }
+      ];
+
+      // Today’s 5 each
       const budgetingQs = getTodaysQuestions(budgetingPool);
       const savingQs    = getTodaysQuestions(savingPool);
+      const investingQs = getTodaysQuestions(investingPool);
+      const debtQs      = getTodaysQuestions(debtPool);
 
-      // Render & handle a quiz
-      function setupQuiz(buttonId, formId, resultId, questions) {
-        const startBtn = document.getElementById(buttonId);
+      // Quiz setup function
+      function setupQuiz(startId, formId, resultId, questions) {
+        const startBtn = document.getElementById(startId);
         const quizForm = document.getElementById(formId);
         const resultEl = document.getElementById(resultId);
 
@@ -306,7 +355,7 @@
           AOS.refresh();
         }
 
-        startBtn.addEventListener("click", ()=> {
+        startBtn.addEventListener("click", ()=>{
           startBtn.style.display = "none";
           render();
         });
@@ -324,9 +373,11 @@
         });
       }
 
-      // Initialize both quizzes
+      // Initialize all quizzes
       setupQuiz("start-budgeting-quiz", "budgeting-quiz-form", "budgeting-quiz-result", budgetingQs);
       setupQuiz("start-saving-quiz",    "saving-quiz-form",    "saving-quiz-result",    savingQs);
+      setupQuiz("start-investing-quiz","investing-quiz-form","investing-quiz-result",investingQs);
+      setupQuiz("start-debt-quiz",     "debt-quiz-form",     "debt-quiz-result",      debtQs);
     });
   </script>
 </body>
