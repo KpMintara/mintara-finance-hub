@@ -16,85 +16,218 @@
   <script defer src="js/scripts.min.js"></script>
 
   <style>
-    /* ─ THEME VARIABLES ─ */
-    :root { /* unchanged */ }
-    [data-theme="light"] { /* unchanged */ }
+    /* THEME VARIABLES */
+    :root {
+      --gradient: linear-gradient(135deg, #0F273D 0%, #1E4568 50%, #2D608F 100%);
+      --text-color: #FFFFFF;
+      --card-bg: rgba(255,255,255,0.1);
+      --accent: #3DDC97;
+    }
+    [data-theme="light"] {
+      --gradient: linear-gradient(135deg, #F0F5F9 0%, #D0E1F9 100%);
+      --text-color: #0D1B2A;
+      --card-bg: rgba(0,0,0,0.05);
+      --accent: #3DDC97;
+    }
 
-    /* ─ GLOBAL RESET & BASE ─ */
-    * { /* unchanged */ }
-    body { /* unchanged */ }
-    a { /* unchanged */ }
+    /* GLOBAL RESET & BASE */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--gradient);
+      color: var(--text-color);
+      line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
+    }
+    a { text-decoration: none; color: inherit; }
 
-    /* ─ NAV ─ */
-    .top-nav { /* unchanged */ }
-    .nav-left img { /* unchanged */ }
-    .nav-right a { /* unchanged */ }
-    .nav-right a:hover { /* unchanged */ }
-    #theme-toggle { /* unchanged */ }
+    /* NAVIGATION */
+    .top-nav {
+      position: fixed; top: 0; left: 0; width: 100%;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 2rem; z-index: 100;
+    }
+    .nav-left img { height: 125px; }
+    .nav-right a, #theme-toggle {
+      margin-left: 1.5rem; font-size: 1.1rem; cursor:pointer;
+      transition: color .3s;
+    }
+    .nav-right a:hover { color: var(--accent); }
 
-    /* ─ HERO ─ */
-    .hero { /* unchanged */ }
-    .hero img { /* unchanged */ }
-    .hero .text { /* unchanged */ }
-    .hero h1 { /* unchanged */ }
-    .hero p  { /* unchanged */ }
-    .hero .cta-button { /* unchanged */ }
-    .hero .cta-button:hover { /* unchanged */ }
+    /* HERO */
+    .hero {
+      display: flex; align-items: center; justify-content: space-between;
+      max-width: 1000px; margin: 180px auto 3rem; padding: 2rem;
+      gap: 2rem; flex-wrap: wrap;
+    }
+    .hero img {
+      width: 300px; height: auto; flex: none;
+    }
+    .hero .text { flex: 1 1 400px; }
+    .hero h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+    .hero p  { margin-bottom: 1.5rem; }
+    .hero .cta-button {
+      font-size: 1.5rem; color: var(--accent);
+      background: transparent; border: none; cursor: pointer;
+      transition: text-decoration 0.3s;
+    }
+    .hero .cta-button:hover { text-decoration: underline; }
 
-    /* ─ FEATURES ─ */
-    .features { /* unchanged */ }
-    .feature-card { /* unchanged */ }
-    .feature-card:hover { /* unchanged */ }
-    .feature-card img { /* unchanged */ }
-    .feature-card h3 { /* unchanged */ }
-    .feature-card p  { /* unchanged */ }
+    /* FEATURES */
+    .features {
+      display: flex; gap: 2rem; flex-wrap: wrap;
+      max-width: 1000px; margin: 3rem auto; padding: 0 2rem;
+    }
+    .feature-card {
+      flex: 1 1 300px; background: var(--card-bg);
+      border-top: 4px solid var(--accent); border-radius: 8px;
+      padding: 1.5rem; transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    }
+    .feature-card img {
+      width: 60px; height: 60px; margin-bottom: 1rem;
+    }
+    .feature-card h3 { margin-bottom: 0.5rem; }
+    .feature-card p  { font-size: 0.95rem; }
 
-    /* ─ 3D FLIP SETUP ─ */
-    .flip-card { /* unchanged */ }
-    .flip-card-inner { /* unchanged */ }
-    .flip-card:hover .flip-card-inner { /* unchanged */ }
+    /* 3D FLIP SETUP */
+    .flip-card { perspective: 1000px; position: relative; }
+    .flip-card-inner {
+      position: relative; width: 100%; height: 100%;
+      transform-style: preserve-3d; transition: transform 0.6s;
+    }
+    .flip-card:hover .flip-card-inner {
+      transform: rotateY(180deg);
+    }
     .flip-card-front,
-    .flip-card-back { /* unchanged */ }
-    .flip-card-back { /* unchanged */ }
-    .tool-btn { /* unchanged */ }
-    .tool-btn:hover { /* unchanged */ }
+    .flip-card-back {
+      position: absolute; top: 0; left: 0;
+      width: 100%; height: 100%;
+      backface-visibility: hidden;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 1.5rem; box-sizing: border-box;
+    }
+    .flip-card-back {
+      background: var(--card-bg);
+      transform: rotateY(180deg);
+      gap: 0.75rem;
+    }
+    .tool-btn {
+      width: 100%; padding: 0.5rem;
+      background: var(--accent); color: #0D1B2A;
+      border: none; border-radius: 4px;
+      font-size: 0.95rem; cursor: pointer;
+      transition: background 0.3s;
+    }
+    .tool-btn:hover { background: #35b787; }
 
-    /* ─ POP‑UP CALCULATOR WINDOW ─ */
-    .tool-window { /* unchanged */ }
-    .tool-window-header { /* unchanged */ }
-    .tool-window-header button#minimize-tool { /* unchanged */ }
-    .tool-window-header button { /* unchanged */ }
-    .tool-window-content { /* unchanged */ }
-    .tool-window-content form { /* unchanged */ }
+    /* POP‑UP CALCULATOR WINDOW */
+    .tool-window {
+      position: fixed; bottom: 20px; right: 20px; width: 300px;
+      background: var(--card-bg);
+      border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      overflow: hidden; z-index: 200;
+    }
+    .tool-window-header {
+      display: flex; justify-content: flex-start; align-items: center;
+      padding: .5rem; background: var(--accent); color: #0D1B2A;
+    }
+    .tool-window-header button#minimize-tool {
+      margin-left: auto; margin-right: .5rem;
+    }
+    .tool-window-header button {
+      background: none; border: none; font-size: 1.2rem; cursor: pointer;
+    }
+    .tool-window-content { padding: 1rem; }
+    .tool-window-content form {
+      display: grid; gap: .5rem;
+    }
     .tool-window-content input,
-    .tool-window-content button { /* unchanged */ }
-    .tool-window-content button:hover { /* unchanged */ }
-    .tool-minimized { /* unchanged */ }
-    .hidden { /* unchanged */ }
+    .tool-window-content button {
+      padding: .5rem; border: none; border-radius: 4px;
+    }
+    .tool-window-content button {
+      background: var(--accent); color: #0D1B2A; cursor: pointer;
+      transition: background .3s;
+    }
+    .tool-window-content button:hover { background: #35b787; }
+    .tool-minimized {
+      position: fixed; bottom: 20px; right: 20px;
+      background: var(--accent); color: #0D1B2A;
+      padding: .5rem 1rem; border-radius: 4px; cursor: pointer;
+      z-index: 200;
+    }
+    .hidden { display: none; }
 
-    /* ─ TESTIMONIALS ─ */
-    .testimonials { /* unchanged */ }
-    .testimonials h2 { /* unchanged */ }
-    .testimonial-grid { /* unchanged */ }
-    .testimonial-card { /* unchanged */ }
-    .testimonial-card::before { /* unchanged */ }
-    .testimonial-card p { /* unchanged */ }
-    .testimonial-card .author { /* unchanged */ }
+    /* TESTIMONIALS */
+    .testimonials {
+      max-width: 1000px; margin: 3rem auto; padding: 0 2rem;
+    }
+    .testimonials h2 {
+      font-size: 2rem; text-align: center;
+      margin-bottom: 1.5rem; color: var(--accent);
+    }
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+      gap: 1.5rem;
+    }
+    .testimonial-card {
+      background: var(--card-bg); padding: 1.5rem;
+      border-radius: 8px; font-style: italic; position: relative;
+    }
+    .testimonial-card::before {
+      content: "“"; font-size: 3rem;
+      position: absolute; top: 0.2rem; left: 0.5rem;
+      color: var(--accent);
+    }
+    .testimonial-card p { margin-bottom: 1rem; }
+    .testimonial-card .author {
+      text-align: right; font-weight: bold; font-style: normal;
+    }
 
-    /* ─ SECONDARY CTA ─ */
-    .cta-section { /* unchanged */ }
-    .cta-section h2 { /* unchanged */ }
-    .cta-section .btn { /* unchanged */ }
-    .cta-section .btn:hover { /* unchanged */ }
+    /* SECONDARY CTA */
+    .cta-section {
+      text-align: center; background: var(--card-bg);
+      max-width: 1000px; margin: 3rem auto; padding: 2rem;
+      border-radius: 8px;
+    }
+    .cta-section h2 { font-size: 2rem; margin-bottom: 1rem; }
+    .cta-section .btn {
+      display: inline-block; padding: 0.75rem 1.5rem; font-size: 1rem;
+      background: var(--accent); color: var(--text-color);
+      border: none; border-radius: 4px; cursor: pointer;
+      transition: background 0.3s;
+    }
+    .cta-section .btn:hover { background: #35b787; }
 
-    /* ─ FOOTER & FADE ─ */
-    .fade-in { /* unchanged */ }
-    @keyframes fadeIn { /* unchanged */ }
-    footer { /* unchanged */ }
-    footer a { /* unchanged */ }
+    /* FOOTER & FADE */
+    .fade-in {
+      opacity: 0; transform: translateY(20px);
+      animation: fadeIn 0.8s forwards;
+    }
+    @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
+    footer {
+      text-align: center; margin: 3rem 0; color: #AAAAAA;
+    }
+    footer a { color: var(--accent); }
 
-    /* ─ RESPONSIVE ─ */
-    @media (max-width: 768px) { /* unchanged */ }
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .nav-left img { height: 100px; }
+      .nav-right a, #theme-toggle { font-size: 1rem; margin-left: 1rem; }
+      .hero {
+        flex-direction: column; margin-top: 260px;
+      }
+      .features, .testimonial-grid {
+        margin: 1.5rem auto; display: flex; flex-direction: column;
+      }
+      .cta-section { margin: 1.5rem auto; }
+    }
   </style>
 </head>
 
@@ -123,7 +256,11 @@
   </section>
 
   <section class="features fade-in" style="animation-delay:1.9s;">
-    <div class="feature-card" onclick="location.href='videos.html'" style="cursor:pointer;">
+    <div
+      class="feature-card"
+      onclick="location.href='videos.html'"
+      style="cursor:pointer;"
+    >
       <img src="images/feature-learning.png" alt="Online learning">
       <h3>Interactive Lessons</h3>
       <p>Engage with concise, jargon‑free videos that simplify complex concepts.</p>
@@ -163,7 +300,7 @@
         <div class="author">– Maria R., 34</div>
       </div>
       <div class="testimonial-card">
-        <p>My teenager and I learn together with these clear, jargon‑free lessons. It’s been a game-changer!</p>
+        <p>My teenager and I learn together with these clear, jargon-free lessons. It’s been a game-changer!</p>
         <div class="author">– Jamal P.</div>
       </div>
     </div>
