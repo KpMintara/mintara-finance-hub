@@ -424,20 +424,33 @@
       const vari = +this['popup-variable'].value;
       const left = inc - fix - vari;
       if (window.popupChart) window.popupChart.destroy();
-      window.popupChart = new Chart(
-        document.getElementById('popup-bud-chart'),
-        {
-          type: 'pie',
-          data: {
-            labels: ['Fixed','Variable','Remaining'],
-            datasets: [{
-              data: [fix, vari, left],
-              backgroundColor: ['#1E4568','#0F273D','#3DDC97']
-            }]
+     window.popupChart = new Chart(
+  document.getElementById('popup-bud-chart'),
+  {
+    type: 'pie',
+    data: {
+      labels: ['Fixed','Variable','Remaining'],
+      datasets: [{
+        data: [fix, vari, left],
+        backgroundColor: ['#1E4568','#0F273D','#3DDC97']
+      }]
+    },
+    options: {
+      plugins: {
+        legend: {
+          labels: {
+            color: '#FFFFFF'
           }
+        },
+        tooltip: {
+          titleColor: '#FFFFFF',
+          bodyColor: '#FFFFFF'
         }
-      );
-    });
+      }
+    }
+  }
+);
+
   </script>
 </body>
 </html>
