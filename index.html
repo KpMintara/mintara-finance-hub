@@ -49,7 +49,7 @@
     }
     .nav-left img { height: 125px; }
     .nav-right a, #theme-toggle {
-      margin-left: 1.5rem; font-size: 1.1rem; cursor:pointer;
+      margin-left: 1.5rem; font-size: 1.1rem; cursor: pointer;
       transition: color .3s;
     }
     .nav-right a:hover { color: var(--accent); }
@@ -136,13 +136,8 @@
       display: flex; justify-content: flex-start; align-items: center;
       padding: .5rem; background: var(--accent); color: #0D1B2A;
     }
-    .tool-window-header button#minimize-tool {
-      margin-left: auto; margin-right: .5rem;
-    }
-    .tool-window-header button#minimize-loan {
-      margin-left: auto; margin-right: .5rem;
-    }
-    /* add this for NPV minimize spacing: */
+    .tool-window-header button#minimize-tool,
+    .tool-window-header button#minimize-loan,
     .tool-window-header button#minimize-npv {
       margin-left: auto; margin-right: .5rem;
     }
@@ -171,8 +166,70 @@
     .hidden { display: none; }
 
     /* ─ TESTIMONIALS ─ */
-    .testimonials { /* unchanged */ }
-    /* ...rest of CSS unchanged... */
+    .testimonials {
+      max-width: 1000px; margin: 3rem auto; padding: 0 2rem;
+    }
+    .testimonials h2 {
+      font-size: 2rem; text-align: center;
+      margin-bottom: 1.5rem; color: var(--accent);
+    }
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+      gap: 1.5rem;
+    }
+    .testimonial-card {
+      background: var(--card-bg); padding: 1.5rem;
+      border-radius: 8px; font-style: italic; position: relative;
+    }
+    .testimonial-card::before {
+      content: "“"; font-size: 3rem;
+      position: absolute; top: 0.2rem; left: 0.5rem;
+      color: var(--accent);
+    }
+    .testimonial-card p { margin-bottom: 1rem; }
+    .testimonial-card .author {
+      text-align: right; font-weight: bold; font-style: normal;
+    }
+
+    /* ─ SECONDARY CTA ─ */
+    .cta-section {
+      text-align: center; background: var(--card-bg);
+      max-width: 1000px; margin: 3rem auto; padding: 2rem;
+      border-radius: 8px;
+    }
+    .cta-section h2 { font-size: 2rem; margin-bottom: 1rem; }
+    .cta-section .btn {
+      display: inline-block; padding: 0.75rem 1.5rem; font-size: 1rem;
+      background: var(--accent); color: var(--text-color);
+      border: none; border-radius: 4px; cursor: pointer;
+      transition: background 0.3s;
+    }
+    .cta-section .btn:hover { background: #35b787; }
+
+    /* ─ FOOTER & FADE ─ */
+    .fade-in {
+      opacity: 0; transform: translateY(20px);
+      animation: fadeIn 0.8s forwards;
+    }
+    @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
+    footer {
+      text-align: center; margin: 3rem 0; color: #AAAAAA;
+    }
+    footer a { color: var(--accent); }
+
+    /* ─ RESPONSIVE ─ */
+    @media (max-width: 768px) {
+      .nav-left img { height: 100px; }
+      .nav-right a, #theme-toggle { font-size: 1rem; margin-left: 1rem; }
+      .hero {
+        flex-direction: column; margin-top: 260px;
+      }
+      .features, .testimonial-grid {
+        margin: 1.5rem auto; display: flex; flex-direction: column;
+      }
+      .cta-section { margin: 1.5rem auto; }
+    }
   </style>
 </head>
 
@@ -191,7 +248,7 @@
     </div>
   </nav>
 
-  <section class="hero fade-in" style="animation-delay:1.6s;">
+  <section class="hero fade-in" data-aos="fade-up" data-aos-delay="200" style="animation-delay:1.6s;">
     <img src="images/hero-illustration.png" alt="Piggy bank illustration">
     <div class="text">
       <h1>Tired of feeling lost with money?</h1>
@@ -200,7 +257,7 @@
     </div>
   </section>
 
-  <section class="features fade-in" style="animation-delay:1.9s;">
+  <section class="features fade-in" data-aos="fade-up" data-aos-delay="400" style="animation-delay:1.9s;">
     <div class="feature-card" onclick="location.href='videos.html'" style="cursor:pointer;">
       <img src="images/feature-learning.png" alt="Online learning">
       <h3>Interactive Lessons</h3>
@@ -229,12 +286,29 @@
     </div>
   </section>
 
-  <section class="testimonials fade-in" style="animation-delay:2.2s;">
-    <!-- unchanged -->
+  <!-- ── TESTIMONIALS (fake reviews) ── -->
+  <section class="testimonials fade-in" data-aos="fade-up" data-aos-delay="600" style="animation-delay:2.2s;">
+    <h2>What People Are Saying</h2>
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <p>This site finally made budgeting make sense—I actually stuck to a plan for the first time!</p>
+        <div class="author">– Alex W., 19</div>
+      </div>
+      <div class="testimonial-card">
+        <p>I never knew how to spot a scam until I watched these videos. Now I feel confident managing my money.</p>
+        <div class="author">– Maria R., 34</div>
+      </div>
+      <div class="testimonial-card">
+        <p>My teenager and I learn together with these clear, jargon‑free lessons. It’s been a game‑changer!</p>
+        <div class="author">– Jamal P.</div>
+      </div>
+    </div>
   </section>
 
-  <section class="cta-section fade-in" style="animation-delay:2.5s;">
-    <!-- unchanged -->
+  <!-- ── SECONDARY CTA ── -->
+  <section class="cta-section fade-in" data-aos="fade-up" data-aos-delay="800" style="animation-delay:2.5s;">
+    <h2>Ready to transform your financial future?</h2>
+    <a href="videos.html" class="btn">Explore Lessons</a>
   </section>
 
   <!-- pop‑up budgeting calculator window -->
@@ -304,6 +378,9 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      // Initialize AOS
+      AOS.init();
+
       // Theme toggle
       const toggle = document.getElementById('theme-toggle');
       const saved  = localStorage.getItem('theme') || 'dark';
@@ -411,7 +488,7 @@
           balance = balance * (1 + rm) - payment;
         }
         if (window.loanChart) window.loanChart.destroy();
-        window.loanChart = new Chart(
+        window.loanChart = newChart(
           document.getElementById('loan-chart'), {
             type: 'line',
             data: {
@@ -488,7 +565,7 @@
 
         const npv = computeNPV(rate, cash);
         const irr = computeIRR(cash) * 100;
-        document.getElementById('npv-result').textContent = `NPV: $${npv.toFixed(2)}`;    
+        document.getElementById('npv-result').textContent = `NPV: $${npv.toFixed(2)}`;
         document.getElementById('irr-result').textContent = isNaN(irr)
           ? 'IRR: N/A'
           : `IRR: ${irr.toFixed(2)}%`;
@@ -525,8 +602,8 @@
               plugins: {
                 legend: { labels: { color: '#FFFFFF' } },
                 tooltip: {
-                  titleColor: '#FFFFFF',
-                  bodyColor: '#FFFFFF'
+                  titleColor: '#WHITE',
+                  bodyColor: '#WHITE'
                 }
               }
             }
