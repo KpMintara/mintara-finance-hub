@@ -9,23 +9,7 @@
 
   <!-- Your compiled CSS -->
   <link rel="stylesheet" href="css/styles.min.css">
-  <!-- speed up all fade‑ins on this page -->
-<style>
-  /* cut animation time in half—from 0.8s down to 0.4s */
-  .fade-in {
-    animation-duration: 0.4s !important;
-  }
-</style>
-
-<!-- if you’re using AOS for on‑scroll fades: shrink AOS timing, too -->
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    AOS.init({
-      duration: 400,  // make AOS animations 400ms instead of default
-      once: true      // play each animation only once
-    });
-  });
-</script>
+ 
 
   <!-- Your compiled JS -->
   <script defer src="js/scripts.min.js"></script>
@@ -123,7 +107,7 @@
     /* ─ FADE-IN & FOOTER ─ */
     .fade-in {
       opacity: 0; transform: translateY(20px);
-      animation: fadeIn 0.8s forwards;
+      animation: fadeIn 0.3s forwards;
     }
     @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
     footer {
