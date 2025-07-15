@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
@@ -17,220 +17,247 @@
 
   <style>
     /* ─ THEME VARIABLES ─ */
-    :root { /* ... unchanged ... */ }
-    [data-theme="light"] { /* ... unchanged ... */ }
+    :root { /* unchanged */ }
+    [data-theme="light"] { /* unchanged */ }
 
     /* ─ GLOBAL RESET & BASE ─ */
-    * { /* ... unchanged ... */ }
-    body { /* ... unchanged ... */ }
-    a { /* ... unchanged ... */ }
+    * { /* unchanged */ }
+    body { /* unchanged */ }
+    a { /* unchanged */ }
 
     /* ─ NAV ─ */
-    .top-nav { /* ... unchanged ... */ }
-    .nav-left img { /* ... unchanged ... */ }
-    .nav-right a { /* ... unchanged ... */ }
-    .nav-right a:hover { /* ... unchanged ... */ }
-    #theme-toggle { /* ... unchanged ... */ }
+    .top-nav { /* unchanged */ }
+    .nav-left img { /* unchanged */ }
+    .nav-right a { /* unchanged */ }
+    .nav-right a:hover { /* unchanged */ }
+    #theme-toggle { /* unchanged */ }
 
     /* ─ HERO ─ */
-    .hero { /* ... unchanged ... */ }
-    .hero img { /* ... unchanged ... */ }
-    .hero .text { /* ... unchanged ... */ }
-    .hero h1 { /* ... unchanged ... */ }
-    .hero p { /* ... unchanged ... */ }
-    .hero .cta-button { /* ... unchanged ... */ }
-    .hero .cta-button:hover { /* ... unchanged ... */ }
+    .hero { /* unchanged */ }
+    .hero img { /* unchanged */ }
+    .hero .text { /* unchanged */ }
+    .hero h1 { /* unchanged */ }
+    .hero p  { /* unchanged */ }
+    .hero .cta-button { /* unchanged */ }
+    .hero .cta-button:hover { /* unchanged */ }
 
     /* ─ FEATURES ─ */
-    .features { /* ... unchanged ... */ }
-    .feature-card { /* ... unchanged ... */ }
-    .feature-card:hover { /* ... unchanged ... */ }
-    .feature-card img { /* ... unchanged ... */ }
-    .feature-card h3 { /* ... unchanged ... */ }
-    .feature-card p { /* ... unchanged ... */ }
+    .features { /* unchanged */ }
+    .feature-card { /* unchanged */ }
+    .feature-card:hover { /* unchanged */ }
+    .feature-card img { /* unchanged */ }
+    .feature-card h3 { /* unchanged */ }
+    .feature-card p  { /* unchanged */ }
 
     /* ─ 3D FLIP SETUP ─ */
-    .flip-card { /* ... unchanged ... */ }
-    .flip-card-inner { /* ... unchanged ... */ }
-    .flip-card:hover .flip-card-inner { /* ... unchanged ... */ }
+    .flip-card { /* unchanged */ }
+    .flip-card-inner { /* unchanged */ }
+    .flip-card:hover .flip-card-inner { /* unchanged */ }
     .flip-card-front,
-    .flip-card-back { /* ... unchanged ... */ }
-    .flip-card-back { /* ... unchanged ... */ }
-    .tool-btn { /* ... unchanged ... */ }
-    .tool-btn:hover { /* ... unchanged ... */ }
+    .flip-card-back { /* unchanged */ }
+    .flip-card-back { /* unchanged */ }
+    .tool-btn { /* unchanged */ }
+    .tool-btn:hover { /* unchanged */ }
 
     /* ─ POP‑UP CALCULATOR WINDOW ─ */
-    .tool-window { /* ... unchanged ... */ }
-    .tool-window-header { /* ... unchanged ... */ }
-    .tool-window-header button#minimize-tool { /* ... unchanged ... */ }
-    .tool-window-header button { /* ... unchanged ... */ }
-    .tool-window-content { /* ... unchanged ... */ }
-    .tool-window-content form { /* ... unchanged ... */ }
+    .tool-window { /* unchanged */ }
+    .tool-window-header { /* unchanged */ }
+    .tool-window-header button#minimize-tool { /* unchanged */ }
+    .tool-window-header button { /* unchanged */ }
+    .tool-window-content { /* unchanged */ }
+    .tool-window-content form { /* unchanged */ }
     .tool-window-content input,
-    .tool-window-content button { /* ... unchanged ... */ }
-    .tool-window-content button:hover { /* ... unchanged ... */ }
-    .tool-minimized { /* ... unchanged ... */ }
-    .hidden { /* ... unchanged ... */ }
+    .tool-window-content button { /* unchanged */ }
+    .tool-window-content button:hover { /* unchanged */ }
+    .tool-minimized { /* unchanged */ }
+    .hidden { /* unchanged */ }
 
     /* ─ TESTIMONIALS ─ */
-    .testimonials { /* ... unchanged ... */ }
-    .testimonials h2 { /* ... unchanged ... */ }
-    .testimonial-grid { /* ... unchanged ... */ }
-    .testimonial-card { /* ... unchanged ... */ }
-    .testimonial-card::before { /* ... unchanged ... */ }
-    .testimonial-card p { /* ... unchanged ... */ }
-    .testimonial-card .author { /* ... unchanged ... */ }
+    .testimonials { /* unchanged */ }
+    .testimonials h2 { /* unchanged */ }
+    .testimonial-grid { /* unchanged */ }
+    .testimonial-card { /* unchanged */ }
+    .testimonial-card::before { /* unchanged */ }
+    .testimonial-card p { /* unchanged */ }
+    .testimonial-card .author { /* unchanged */ }
 
     /* ─ SECONDARY CTA ─ */
-    .cta-section { /* ... unchanged ... */ }
-    .cta-section h2 { /* ... unchanged ... */ }
-    .cta-section .btn { /* ... unchanged ... */ }
-    .cta-section .btn:hover { /* ... unchanged ... */ }
+    .cta-section { /* unchanged */ }
+    .cta-section h2 { /* unchanged */ }
+    .cta-section .btn { /* unchanged */ }
+    .cta-section .btn:hover { /* unchanged */ }
 
     /* ─ FOOTER & FADE ─ */
-    .fade-in { /* ... unchanged ... */ }
-    @keyframes fadeIn { /* ... unchanged ... */ }
-    footer { /* ... unchanged ... */ }
-    footer a { /* ... unchanged ... */ }
+    .fade-in { /* unchanged */ }
+    @keyframes fadeIn { /* unchanged */ }
+    footer { /* unchanged */ }
+    footer a { /* unchanged */ }
 
     /* ─ RESPONSIVE ─ */
-    @media (max-width: 768px) { /* ... unchanged ... */ }
+    @media (max-width: 768px) { /* unchanged */ }
   </style>
 </head>
 
 <body data-theme="dark">
-  <nav class="top-nav">  
-    <!-- nav unchanged -->  
+  <nav class="top-nav">
+    <div class="nav-left">
+      <a href="index.html"><img src="images/logo.png" alt="Mintara logo"></a>
+    </div>
+    <div class="nav-right">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="videos.html">Videos</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+      <span id="theme-toggle">🌙</span>
+    </div>
   </nav>
 
   <section class="hero fade-in" style="animation-delay:1.6s;">
-    <!-- hero unchanged -->
+    <img src="images/hero-illustration.png" alt="Piggy bank illustration">
+    <div class="text">
+      <h1>Tired of feeling lost with money?</h1>
+      <p>Build your financial confidence with bite-sized lessons and interactive tools—completely free.</p>
+      <button onclick="location.href='videos.html'" class="cta-button">Get Started Now</button>
+    </div>
   </section>
 
   <section class="features fade-in" style="animation-delay:1.9s;">
     <div class="feature-card" onclick="location.href='videos.html'" style="cursor:pointer;">
-      <!-- Interactive Lessons unchanged -->
+      <img src="images/feature-learning.png" alt="Online learning">
+      <h3>Interactive Lessons</h3>
+      <p>Engage with concise, jargon‑free videos that simplify complex concepts.</p>
     </div>
 
     <div class="feature-card flip-card">
       <div class="flip-card-inner">
         <div class="flip-card-front">
-          <!-- front unchanged -->
+          <img src="images/feature-calculator.png" alt="Calculator on desk">
+          <h3>Smart Tools</h3>
+          <p>Use built-in calculators to plan budgets, savings, and investments instantly.</p>
         </div>
         <div class="flip-card-back">
           <button class="tool-btn" id="btn-budget">Budgeting Calculator</button>
-          <button class="tool-btn" id="btn-compound">Compound Interest Projection</button>
+          <button class="tool-btn">Compound Interest Projection</button>
           <button class="tool-btn">Loan Schedule Tool</button>
         </div>
       </div>
     </div>
 
     <div class="feature-card" onclick="location.href='contact.html'" style="cursor:pointer">
-      <!-- Expert Tips unchanged -->
+      <img src="images/feature-tips.png" alt="Advisor chatting">
+      <h3>Expert Tips</h3>
+      <p>Get practical advice and proven strategies to avoid scams and grow wealth.</p>
     </div>
   </section>
 
   <section class="testimonials fade-in" style="animation-delay:2.2s;">
-    <!-- testimonials unchanged -->
+    <h2>What People Are Saying</h2>
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <p>This site finally made budgeting make sense—I actually stuck to a plan for the first time!</p>
+        <div class="author">– Alex W., 19</div>
+      </div>
+      <div class="testimonial-card">
+        <p>I never knew how to spot a scam until I watched these videos. Now I feel confident managing my money.</p>
+        <div class="author">– Maria R., 34</div>
+      </div>
+      <div class="testimonial-card">
+        <p>My teenager and I learn together with these clear, jargon‑free lessons. It’s been a game-changer!</p>
+        <div class="author">– Jamal P.</div>
+      </div>
+    </div>
   </section>
 
   <section class="cta-section fade-in" style="animation-delay:2.5s;">
-    <!-- secondary CTA unchanged -->
+    <h2>Ready to transform your financial future?</h2>
+    <a href="videos.html" class="btn">Explore Lessons</a>
   </section>
 
   <!-- pop‑up calculator window -->
   <div id="tool-window" class="tool-window hidden">
-    <!-- budgeting tool unchanged -->
-  </div>
-  <div id="tool-minimized" class="tool-minimized hidden">Budgeting Calculator</div>
-
-  <!-- pop‑up compound interest window -->
-  <div id="tool-window-compound" class="tool-window hidden">
     <div class="tool-window-header">
-      <span>Compound Interest Projection</span>
-      <button id="minimize-compound">–</button>
-      <button id="close-compound">×</button>
+      <span>Budgeting Calculator</span>
+      <button id="minimize-tool">–</button>
+      <button id="close-tool">×</button>
     </div>
     <div class="tool-window-content">
-      <form id="compound-form">
-        <input type="number" id="compound-principal" placeholder="Principal ($)" required>
-        <input type="number" step="0.01" id="compound-rate" placeholder="Annual Rate (%)" required>
-        <input type="number" id="compound-years" placeholder="Years" required>
-        <input type="number" id="compound-frequency" placeholder="Compounds per year" required>
-        <button type="submit">Calculate</button>
+      <form id="popup-budget-form">
+        <input type="number" id="popup-income"    placeholder="Net Income ($)"       required>
+        <input type="number" id="popup-fixed"     placeholder="Fixed Expenses ($)"    required>
+        <input type="number" id="popup-variable"  placeholder="Variable Expenses ($)" required>
+        <button type="submit">Run Calculator</button>
       </form>
-      <canvas id="compound-chart"></canvas>
+      <canvas id="popup-bud-chart"></canvas>
     </div>
   </div>
-  <div id="tool-minimized-compound" class="tool-minimized hidden">
-    Compound Interest Projection
-  </div>
+
+  <!-- minimized bar -->
+  <div id="tool-minimized" class="tool-minimized hidden">Budgeting Calculator</div>
 
   <footer class="fade-in" style="animation-delay:2.8s;">
-    <!-- footer unchanged -->
+    &copy; 2025 Mintara Finance Hub • <a href="index.html">Home</a>
   </footer>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // Theme toggle unchanged...
-
-      // Pop‑up budgeting calculator controls unchanged...
-
-      // Render pie chart unchanged...
-
-      // Compound‑Interest window controls
-      const btnCompound     = document.getElementById('btn-compound');
-      const winCompound     = document.getElementById('tool-window-compound');
-      const minCompound     = document.getElementById('minimize-compound');
-      const closeCompound   = document.getElementById('close-compound');
-      const miniBarCompound = document.getElementById('tool-minimized-compound');
-      const compoundForm    = document.getElementById('compound-form');
-
-      btnCompound.addEventListener('click', () => {
-        winCompound.classList.remove('hidden');
-        miniBarCompound.classList.add('hidden');
-      });
-      minCompound.addEventListener('click', () => {
-        winCompound.classList.add('hidden');
-        miniBarCompound.classList.remove('hidden');
-      });
-      closeCompound.addEventListener('click', () => {
-        winCompound.classList.add('hidden');
-        miniBarCompound.classList.add('hidden');
-      });
-      miniBarCompound.addEventListener('click', () => {
-        winCompound.classList.remove('hidden');
-        miniBarCompound.classList.add('hidden');
+      // Theme toggle
+      const toggle = document.getElementById('theme-toggle');
+      const saved = localStorage.getItem('theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', saved);
+      toggle.textContent = saved === 'dark' ? '☀️' : '🌙';
+      toggle.addEventListener('click', () => {
+        const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+        toggle.textContent = next === 'dark' ? '☀️' : '🌙';
       });
 
-      // Compound‑interest calculation & Chart.js
-      compoundForm.addEventListener('submit', function(e) {
+      // Pop‑up calculator controls
+      const btnBudget = document.getElementById('btn-budget');
+      const win       = document.getElementById('tool-window');
+      const minBtn    = document.getElementById('minimize-tool');
+      const closeBtn  = document.getElementById('close-tool');
+      const miniBar   = document.getElementById('tool-minimized');
+      const popupForm = document.getElementById('popup-budget-form');
+
+      btnBudget.addEventListener('click', () => {
+        win.classList.remove('hidden');
+        miniBar.classList.add('hidden');
+      });
+      minBtn.addEventListener('click', () => {
+        win.classList.add('hidden');
+        miniBar.classList.remove('hidden');
+      });
+      closeBtn.addEventListener('click', () => {
+        win.classList.add('hidden');
+        miniBar.classList.add('hidden');
+      });
+      miniBar.addEventListener('click', () => {
+        win.classList.remove('hidden');
+        miniBar.classList.add('hidden');
+      });
+
+      // Render pie chart in pop‑up with white text
+      popupForm.addEventListener('submit', function(e) {
         e.preventDefault();
-        const P = +this['compound-principal'].value;
-        const r = +this['compound-rate'].value  / 100;
-        const t = +this['compound-years'].value;
-        const n = +this['compound-frequency'].value;
-        const labels = [], data = [];
-        for (let year = 0; year <= t; year++) {
-          labels.push(year + 'yr');
-          data.push(P * Math.pow(1 + r/n, n * year));
-        }
-        if (window.compoundChart) window.compoundChart.destroy();
-        window.compoundChart = new Chart(
-          document.getElementById('compound-chart'), {
-            type: 'line',
-            data: { labels, datasets: [{
-              label: 'Value over time',
-              data,
-              borderColor: '#3DDC97',
-              backgroundColor: 'rgba(61,220,151,0.2)',
-              fill: true
-            }]},
+        const inc  = +this['popup-income'].value;
+        const fix  = +this['popup-fixed'].value;
+        const vari = +this['popup-variable'].value;
+        const left = inc - fix - vari;
+        if (window.popupChart) window.popupChart.destroy();
+        window.popupChart = new Chart(
+          document.getElementById('popup-bud-chart'),
+          {
+            type: 'pie',
+            data: {
+              labels: ['Fixed','Variable','Remaining'],
+              datasets: [{
+                data: [fix, vari, left],
+                backgroundColor: ['#1E4568','#0F273D','#3DDC97']
+              }]
+            },
             options: {
-              scales: {
-                y: { beginAtZero: true, ticks: { color: '#FFFFFF' } },
-                x: { ticks: { color: '#FFFFFF' } }
-              },
               plugins: {
                 legend: { labels: { color: '#FFFFFF' } },
                 tooltip: {
