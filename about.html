@@ -18,6 +18,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>About – Mintara Finance Hub</title>
   <style>
+    /* ─── Hide the blinking text‐caret (cursor) when clicking on page text ─── */
+body, body * {
+  /* make sure no element ever shows a text caret */
+  caret-color: transparent !important;
+}
+
+/* also remove any focus outline on click */
+*:focus {
+  outline: none !important;
+}
+
     /* ─ THEME VARIABLES ─ */
     :root {
       --gradient: linear-gradient(135deg, #0F273D 0%, #1E4568 50%, #2D608F 100%);
