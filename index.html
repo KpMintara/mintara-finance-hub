@@ -16,13 +16,9 @@
   <script defer src="js/scripts.min.js"></script>
 
   <style>
-    /* ─── Hide the blinking text‐caret (cursor) when clicking on page text ─── */
-    body, body * {
-      caret-color: transparent !important;
-    }
-    *:focus {
-      outline: none !important;
-    }
+    /* ─── Hide the blinking caret ─── */
+    body, body * { caret-color: transparent !important; }
+    *:focus { outline: none !important; }
 
     /* ─── Chat‑Tutor Styles ─── */
     #chat-toggle {
@@ -288,100 +284,4 @@
     }
     @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
     footer {
-      text-align: center; margin: 3rem 0; color: #AAAAAA;
-    }
-    footer a { color: var(--accent); }
-
-    /* ─ RESPONSIVE ─ */
-    @media (max-width: 768px) {
-      .nav-left img { height: 100px; }
-      .nav-right a, #theme-toggle { font-size: 1rem; margin-left: 1rem; }
-      .hero {
-        flex-direction: column; margin-top: 260px;
-      }
-      .features, .testimonial-grid {
-        margin: 1.5rem auto; display: flex; flex-direction: column;
-      }
-      .cta-section { margin: 1.5rem auto; }
-    }
-  </style>
-</head>
-
-<body data-theme="dark">
-  <nav class="top-nav">
-    <div class="nav-left">
-      <a href="index.html"><img src="images/logo.png" alt="Mintara logo"></a>
-    </div>
-    <div class="nav-right">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="videos.html">Videos</a>
-      <a href="blog.html">Blog</a>
-      <a href="contact.html">Contact</a>
-      <span id="theme-toggle">🌙</span>
-    </div>
-  </nav>
-
-  <section class="hero fade-in" data-aos="fade-up" data-aos-delay="200" style="animation-delay:1.6s;">
-    <!-- ... existing hero content ... -->
-  </section>
-
-  <!-- ... rest of your existing page content ... -->
-
-  <!-- Chat‑Tutor Widget -->
-  <div id="chat-toggle"></div>
-  <div id="chat-window">
-    <header>AI Finance Bot</header>
-    <div class="messages">
-      <div class="message bot">Hello! I’m your AI Finance Tutor. Ask me anything about budgeting, saving, or investing.</div>
-    </div>
-    <form class="input-area">
-      <input type="text" placeholder="Type a message…" required />
-      <button type="submit">Send</button>
-    </form>
-  </div>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const toggle = document.getElementById("chat-toggle");
-      const win    = document.getElementById("chat-window");
-      const form   = win.querySelector("form");
-      const msgs   = win.querySelector(".messages");
-
-      // Toggle chat window
-      toggle.addEventListener("click", () => {
-        win.style.display = win.style.display === "flex" ? "none" : "flex";
-      });
-
-      // Handle message sending
-      form.addEventListener("submit", e => {
-        e.preventDefault();
-        const input = form.querySelector("input");
-        const text  = input.value.trim();
-        if (!text) return;
-
-        // Add user message
-        const um = document.createElement("div");
-        um.className = "message user";
-        um.textContent = text;
-        msgs.appendChild(um);
-        input.value = "";
-        msgs.scrollTop = msgs.scrollHeight;
-
-        // Placeholder bot reply
-        const bm = document.createElement("div");
-        bm.className = "message bot";
-        bm.textContent = "Let me think…";
-        msgs.appendChild(bm);
-        msgs.scrollTop = msgs.scrollHeight;
-
-        // Simulate async response
-        setTimeout(() => {
-          bm.textContent = "Sorry, I’m still learning. Check out our budgeting and saving videos in the meantime!";
-          msgs.scrollTop = msgs.scrollHeight;
-        }, 1000);
-      });
-    });
-  </script>
-</body>
-</html>
+      text-align: center; margi
