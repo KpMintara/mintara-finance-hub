@@ -543,7 +543,79 @@ body, body * {
         winLoan.classList.add('hidden');
         miniLoan.classList.add('hidden');
       });
+     
+
+    
+      // …your last listener ended at miniLoan…
       miniLoan.addEventListener('click', () => {
         winLoan.classList.remove('hidden');
-        miniLoan.class
+        miniLoan.classList.add('hidden');
+      });
+
+      // ─── NPV & IRR Analyzer controls + calculation (unchanged) ───
+      // (all of your existing computeNPV, computeIRR functions and formNpv handler here)
+
+    });  // <-- end of document.addEventListener('DOMContentLoaded'
+  </script>
+
+  <!-- ─── AI Finance Bot Toggle & Window ─── -->
+  <div id="chat-toggle"></div>
+  <div id="chat-window">
+    <header>AI Finance Bot</header>
+    <div class="messages">
+      <div class="message bot">
+        Hello! I’m your AI Finance Tutor. Ask me anything about budgeting, saving, or investing.
+      </div>
+    </div>
+    <form class="input-area">
+      <input type="text" placeholder="Type a message…" required />
+      <button type="submit">Send</button>
+    </form>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggle = document.getElementById('chat-toggle');
+      const win    = document.getElementById('chat-window');
+      const form   = win.querySelector('form');
+      const msgs   = win.querySelector('.messages');
+
+      // show/hide chat window
+      toggle.addEventListener('click', () => {
+        win.style.display = win.style.display === 'flex' ? 'none' : 'flex';
+      });
+
+      // handle send
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        const input = form.querySelector('input');
+        const text  = input.value.trim();
+        if (!text) return;
+
+        // user message
+        const um = document.createElement('div');
+        um.className = 'message user';
+        um.textContent = text;
+        msgs.appendChild(um);
+
+        input.value = '';
+        msgs.scrollTop = msgs.scrollHeight;
+
+        // placeholder bot response
+        const bm = document.createElement('div');
+        bm.className = 'message bot';
+        bm.textContent = 'Let me think…';
+        msgs.appendChild(bm);
+        msgs.scrollTop = msgs.scrollHeight;
+
+        // simulate reply
+        setTimeout(() => {
+          bm.textContent = 'Sorry, I’m still learning. Check out our budgeting and saving videos in the meantime!';
+          msgs.scrollTop = msgs.scrollHeight;
+        }, 1000);
+      });
+    });
+  </script>
+</body>
+</html>
 
