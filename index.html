@@ -242,71 +242,7 @@ body, body * {
       }
       .cta-section { margin: 1.5rem auto; }
     }
-    /* ─── AI Finance Bot Widget Styles ─── */
-#chat-toggle {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  width: 60px;
-  height: 60px;
-  background: url('images/ai-finance-bot.png') center/cover no-repeat;
-  border: 3px solid var(--accent);
-  border-radius: 50%;
-  cursor: pointer;
-  z-index: 1000;
-}
-#chat-window {
-  position: fixed;
-  bottom: 90px;
-  left: 20px;
-  width: 300px;
-  max-height: 400px;
-  display: none;
-  flex-direction: column;
-  background: var(--card-bg);
-  border-radius: 8px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-  z-index: 1000;
-}
-#chat-window header {
-  padding: 0.5rem;
-  background: var(--accent);
-  color: var(--text-color);
-  font-weight: bold;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
-}
-#chat-window .messages {
-  flex: 1;
-  padding: 0.5rem;
-  overflow-y: auto;
-}
-#chat-window .messages .message {
-  margin-bottom: 0.5rem;
-}
-#chat-window .messages .message.user {
-  text-align: right;
-}
-#chat-window .input-area {
-  display: flex;
-  padding: 0.5rem;
-  border-top: 1px solid rgba(255,255,255,0.2);
-}
-#chat-window .input-area input {
-  flex: 1;
-  padding: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-#chat-window .input-area button {
-  margin-left: 0.5rem;
-  padding: 0.5rem 1rem;
-  background: var(--accent);
-  color: var(--text-color);
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
+    
 
   </style>
 </head>
@@ -558,64 +494,8 @@ body, body * {
     });  // <-- end of document.addEventListener('DOMContentLoaded'
   </script>
 
-  <!-- ─── AI Finance Bot Toggle & Window ─── -->
-  <div id="chat-toggle"></div>
-  <div id="chat-window">
-    <header>AI Finance Bot</header>
-    <div class="messages">
-      <div class="message bot">
-        Hello! I’m your AI Finance Tutor. Ask me anything about budgeting, saving, or investing.
-      </div>
-    </div>
-    <form class="input-area">
-      <input type="text" placeholder="Type a message…" required />
-      <button type="submit">Send</button>
-    </form>
-  </div>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const toggle = document.getElementById('chat-toggle');
-      const win    = document.getElementById('chat-window');
-      const form   = win.querySelector('form');
-      const msgs   = win.querySelector('.messages');
 
-      // show/hide chat window
-      toggle.addEventListener('click', () => {
-        win.style.display = win.style.display === 'flex' ? 'none' : 'flex';
-      });
-
-      // handle send
-      form.addEventListener('submit', e => {
-        e.preventDefault();
-        const input = form.querySelector('input');
-        const text  = input.value.trim();
-        if (!text) return;
-
-        // user message
-        const um = document.createElement('div');
-        um.className = 'message user';
-        um.textContent = text;
-        msgs.appendChild(um);
-
-        input.value = '';
-        msgs.scrollTop = msgs.scrollHeight;
-
-        // placeholder bot response
-        const bm = document.createElement('div');
-        bm.className = 'message bot';
-        bm.textContent = 'Let me think…';
-        msgs.appendChild(bm);
-        msgs.scrollTop = msgs.scrollHeight;
-
-        // simulate reply
-        setTimeout(() => {
-          bm.textContent = 'Sorry, I’m still learning. Check out our budgeting and saving videos in the meantime!';
-          msgs.scrollTop = msgs.scrollHeight;
-        }, 1000);
-      });
-    });
-  </script>
 </body>
 </html>
 
