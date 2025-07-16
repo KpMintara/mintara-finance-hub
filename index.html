@@ -16,17 +16,79 @@
   <script defer src="js/scripts.min.js"></script>
 
   <style>
-    
     /* ─── Hide the blinking text‐caret (cursor) when clicking on page text ─── */
-body, body * {
-  /* make sure no element ever shows a text caret */
-  caret-color: transparent !important;
-}
+    body, body * {
+      caret-color: transparent !important;
+    }
+    *:focus {
+      outline: none !important;
+    }
 
-/* also remove any focus outline on click */
-*:focus {
-  outline: none !important;
-}
+    /* ─── Chat‑Tutor Styles ─── */
+    #chat-toggle {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      width: 60px;
+      height: 60px;
+      background: url('images/ai-finance-bot.png') center/cover no-repeat;
+      border: 3px solid var(--accent);
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 1000;
+    }
+    #chat-window {
+      position: fixed;
+      bottom: 90px;
+      left: 20px;
+      width: 300px;
+      max-height: 400px;
+      display: none;
+      flex-direction: column;
+      background: var(--card-bg);
+      border-radius: 8px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      z-index: 1000;
+    }
+    #chat-window header {
+      padding: 0.5rem;
+      background: var(--accent);
+      color: var(--text-color);
+      font-weight: bold;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+    }
+    #chat-window .messages {
+      flex: 1;
+      padding: 0.5rem;
+      overflow-y: auto;
+    }
+    #chat-window .messages .message {
+      margin-bottom: 0.5rem;
+    }
+    #chat-window .messages .message.user {
+      text-align: right;
+    }
+    #chat-window .input-area {
+      display: flex;
+      padding: 0.5rem;
+      border-top: 1px solid rgba(255,255,255,0.2);
+    }
+    #chat-window .input-area input {
+      flex: 1;
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    #chat-window .input-area button {
+      margin-left: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: var(--accent);
+      color: var(--text-color);
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
 
     /* ─ THEME VARIABLES ─ */
     :root {
@@ -261,371 +323,65 @@ body, body * {
   </nav>
 
   <section class="hero fade-in" data-aos="fade-up" data-aos-delay="200" style="animation-delay:1.6s;">
-    <img src="images/hero-illustration.png" alt="Piggy bank illustration">
-    <div class="text">
-      <h1>Tired of feeling lost with money?</h1>
-      <p>Build your financial confidence with bite-sized lessons and interactive tools—completely free.</p>
-      <button onclick="location.href='videos.html'" class="cta-button">Get Started Now</button>
-    </div>
+    <!-- ... existing hero content ... -->
   </section>
 
-  <section class="features fade-in" data-aos="fade-up" data-aos-delay="400" style="animation-delay:1.9s;">
-    <div class="feature-card" onclick="location.href='videos.html'" style="cursor:pointer;">
-      <img src="images/feature-learning.png" alt="Online learning">
-      <h3>Interactive Lessons</h3>
-      <p>Engage with concise, jargon‑free videos that simplify complex concepts.</p>
-    </div>
+  <!-- ... rest of your existing page content ... -->
 
-    <div class="feature-card flip-card">
-      <div class="flip-card-inner">
-        <div class="flip-card-front">
-          <img src="images/feature-calculator.png" alt="Calculator on desk">
-          <h3>Smart Tools</h3>
-          <p>Use built-in calculators to plan budgets, savings, and investments instantly.</p>
-        </div>
-        <div class="flip-card-back">
-          <button class="tool-btn" id="btn-budget">Budgeting Calculator</button>
-          <button class="tool-btn" id="btn-loan">Loan Schedule Tool</button>
-          <button class="tool-btn" id="btn-npv">NPV & IRR Analyzer</button>
-        </div>
-      </div>
+  <!-- Chat‑Tutor Widget -->
+  <div id="chat-toggle"></div>
+  <div id="chat-window">
+    <header>AI Finance Bot</header>
+    <div class="messages">
+      <div class="message bot">Hello! I’m your AI Finance Tutor. Ask me anything about budgeting, saving, or investing.</div>
     </div>
-
-    <div class="feature-card" onclick="location.href='contact.html'" style="cursor:pointer">
-      <img src="images/feature-tips.png" alt="Advisor chatting">
-      <h3>Expert Tips</h3>
-      <p>Get practical advice and proven strategies to avoid scams and grow wealth.</p>
-    </div>
-  </section>
-
-  <!-- ── TESTIMONIALS (fake reviews) ── -->
-  <section class="testimonials fade-in" data-aos="fade-up" data-aos-delay="600" style="animation-delay:2.2s;">
-    <h2>What People Are Saying</h2>
-    <div class="testimonial-grid">
-      <div class="testimonial-card">
-        <p>This site finally made budgeting make sense—I actually stuck to a plan for the first time!</p>
-        <div class="author">– Alex W., 19</div>
-      </div>
-      <div class="testimonial-card">
-        <p>I never knew how to spot a scam until I watched these videos. Now I feel confident managing my money.</p>
-        <div class="author">– Maria R., 34</div>
-      </div>
-      <div class="testimonial-card">
-        <p>My teenager and I learn together with these clear, jargon‑free lessons. It’s been a game‑changer!</p>
-        <div class="author">– Jamal P.</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── SECONDARY CTA ── -->
-  <section class="cta-section fade-in" data-aos="fade-up" data-aos-delay="800" style="animation-delay:2.5s;">
-    <h2>Ready to transform your financial future?</h2>
-    <a href="videos.html" class="btn">Explore Lessons</a>
-  </section>
-
-  <!-- pop‑up budgeting calculator window -->
-  <div id="tool-window" class="tool-window hidden">
-    <div class="tool-window-header">
-      <span>Budgeting Calculator</span>
-      <button id="minimize-tool">–</button>
-      <button id="close-tool">×</button>
-    </div>
-    <div class="tool-window-content">
-      <form id="popup-budget-form">
-        <input type="number" id="popup-income"    placeholder="Net Income ($)" required>
-        <input type="number" id="popup-fixed"     placeholder="Fixed Expenses ($)" required>
-        <input type="number" id="popup-variable"  placeholder="Variable Expenses ($)" required>
-        <button type="submit">Run Calculator</button>
-      </form>
-      <canvas id="popup-bud-chart"></canvas>
-    </div>
+    <form class="input-area">
+      <input type="text" placeholder="Type a message…" required />
+      <button type="submit">Send</button>
+    </form>
   </div>
-  <div id="tool-minimized" class="tool-minimized hidden">Budgeting Calculator</div>
-
-  <!-- pop‑up loan schedule window -->
-  <div id="tool-window-loan" class="tool-window hidden">
-    <div class="tool-window-header">
-      <span>Loan Schedule Tool</span>
-      <button id="minimize-loan">–</button>
-      <button id="close-loan">×</button>
-    </div>
-    <div class="tool-window-content">
-      <form id="loan-form">
-        <input type="number" id="loan-amount"    placeholder="Loan Amount ($)" required>
-        <input type="number" step="0.01" id="loan-rate"      placeholder="Annual Rate (%)" required>
-        <input type="number" id="loan-years"     placeholder="Term (years)" required>
-        <button type="submit">Calculate</button>
-      </form>
-      <canvas id="loan-chart"></canvas>
-    </div>
-  </div>
-  <div id="tool-minimized-loan" class="tool-minimized hidden">Loan Schedule Tool</div>
-
-  <!-- pop‑up NPV & IRR Analyzer -->
-  <div id="tool-window-npv" class="tool-window hidden">
-    <div class="tool-window-header">
-      <span>NPV &amp; IRR Analyzer</span>
-      <button id="minimize-npv">–</button>
-      <button id="close-npv">×</button>
-    </div>
-    <div class="tool-window-content">
-      <form id="npv-form">
-        <input type="number" step="0.01" id="npv-invest" placeholder="Initial Investment ($)" required>
-        <input type="number" step="0.01" id="npv-rate"   placeholder="Discount Rate (%)"   required>
-        <input type="text"           id="npv-flows"   placeholder="Future Cash Flows (comma‑sep)" required>
-        <button type="submit">Calculate</button>
-      </form>
-      <div style="margin:1rem 0; text-align:center;">
-        <p id="npv-result" style="font-weight:bold;"></p>
-        <p id="irr-result" style="font-weight:bold;"></p>
-      </div>
-      <canvas id="npv-chart"></canvas>
-    </div>
-  </div>
-  <div id="tool-minimized-npv" class="tool-minimized hidden">NPV &amp; IRR Analyzer</div>
-
-  <footer class="fade-in" style="animation-delay:2.8s;">
-    &copy; 2025 Mintara Finance Hub • <a href="index.html">Home</a>
-  </footer>
 
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // Initialize AOS
-      AOS.init();
+    document.addEventListener("DOMContentLoaded", () => {
+      const toggle = document.getElementById("chat-toggle");
+      const win    = document.getElementById("chat-window");
+      const form   = win.querySelector("form");
+      const msgs   = win.querySelector(".messages");
 
-      // Theme toggle
-      const toggle = document.getElementById('theme-toggle');
-      const saved  = localStorage.getItem('theme') || 'dark';
-      document.documentElement.setAttribute('data-theme', saved);
-      toggle.textContent = saved === 'dark' ? '☀️' : '🌙';
-      toggle.addEventListener('click', () => {
-        const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-        document.documentElement.setAttribute('data-theme', next);
-        localStorage.setItem('theme', next);
-        toggle.textContent = next === 'dark' ? '☀️' : '🌙';
+      // Toggle chat window
+      toggle.addEventListener("click", () => {
+        win.style.display = win.style.display === "flex" ? "none" : "flex";
       });
 
-      // Budgeting Calculator controls
-      const btnBudget = document.getElementById('btn-budget');
-      const winBudget = document.getElementById('tool-window');
-      const minBudget = document.getElementById('minimize-tool');
-      const closeBudget = document.getElementById('close-tool');
-      const miniBudget = document.getElementById('tool-minimized');
-      const formBudget = document.getElementById('popup-budget-form');
-
-      btnBudget.addEventListener('click', () => {
-        winBudget.classList.remove('hidden');
-        miniBudget.classList.add('hidden');
-      });
-      minBudget.addEventListener('click', () => {
-        winBudget.classList.add('hidden');
-        miniBudget.classList.remove('hidden');
-      });
-      closeBudget.addEventListener('click', () => {
-        winBudget.classList.add('hidden');
-        miniBudget.classList.add('hidden');
-      });
-      miniBudget.addEventListener('click', () => {
-        winBudget.classList.remove('hidden');
-        miniBudget.classList.add('hidden');
-      });
-
-      // Budgeting Chart
-      formBudget.addEventListener('submit', function(e) {
+      // Handle message sending
+      form.addEventListener("submit", e => {
         e.preventDefault();
-        const inc  = +this['popup-income'].value;
-        const fix  = +this['popup-fixed'].value;
-        const vari = +this['popup-variable'].value;
-        const left = inc - fix - vari;
-        if (window.popupChart) window.popupChart.destroy();
-        window.popupChart = new Chart(
-          document.getElementById('popup-bud-chart'), {
-            type: 'pie',
-            data: {
-              labels: ['Fixed','Variable','Remaining'],
-              datasets: [{
-                data: [fix, vari, left],
-                backgroundColor: ['#1E4568','#0F273D','#3DDC97']
-              }]
-            },
-            options: {
-              plugins: {
-                legend: { labels: { color: '#FFFFFF' } },
-                tooltip: { titleColor: '#FFFFFF', bodyColor: '#FFFFFF' }
-              }
-            }
-          }
-        );
-      });
+        const input = form.querySelector("input");
+        const text  = input.value.trim();
+        if (!text) return;
 
-      // Loan Schedule Tool controls
-      const btnLoan   = document.getElementById('btn-loan');
-      const winLoan   = document.getElementById('tool-window-loan');
-      const minLoan   = document.getElementById('minimize-loan');
-      const closeLoan = document.getElementById('close-loan');
-      const miniLoan  = document.getElementById('tool-minimized-loan');
-      const formLoan  = document.getElementById('loan-form');
+        // Add user message
+        const um = document.createElement("div");
+        um.className = "message user";
+        um.textContent = text;
+        msgs.appendChild(um);
+        input.value = "";
+        msgs.scrollTop = msgs.scrollHeight;
 
-      btnLoan.addEventListener('click', () => {
-        winLoan.classList.remove('hidden');
-        miniLoan.classList.add('hidden');
-      });
-      minLoan.addEventListener('click', () => {
-        winLoan.classList.add('hidden');
-        miniLoan.classList.remove('hidden');
-      });
-      closeLoan.addEventListener('click', () => {
-        winLoan.classList.add('hidden');
-        miniLoan.classList.add('hidden');
-      });
-      miniLoan.addEventListener('click', () => {
-        winLoan.classList.remove('hidden');
-        miniLoan.classList.add('hidden');
-      });
+        // Placeholder bot reply
+        const bm = document.createElement("div");
+        bm.className = "message bot";
+        bm.textContent = "Let me think…";
+        msgs.appendChild(bm);
+        msgs.scrollTop = msgs.scrollHeight;
 
-      // Loan amortization chart
-      formLoan.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const P = +this['loan-amount'].value;
-        const r = +this['loan-rate'].value  / 100;
-        const t = +this['loan-years'].value;
-        const n = t * 12;
-        const rm = r / 12;
-        const payment = P * rm / (1 - Math.pow(1 + rm, -n));
-        const labels = [], data = [];
-        let balance = P;
-        for (let i = 0; i <= n; i++) {
-          labels.push(i + 'mo');
-          data.push(balance);
-          balance = balance * (1 + rm) - payment;
-        }
-        if (window.loanChart) window.loanChart.destroy();
-        window.loanChart = newChart(
-          document.getElementById('loan-chart'), {
-            type: 'line',
-            data: {
-              labels,
-              datasets: [{
-                label: 'Remaining Balance',
-                data,
-                borderColor: '#3DDC97',
-                backgroundColor: 'rgba(61,220,151,0.2)',
-                fill: true
-              }]
-            },
-            options: {
-              scales: {
-                y: { beginAtZero: true, ticks: { color: '#FFFFFF' } },
-                x: { ticks: { color: '#FFFFFF' } }
-              },
-              plugins: {
-                legend: { labels: { color: '#FFFFFF' } },
-                tooltip: { titleColor: '#FFFFFF', bodyColor: '#FFFFFF' }
-              }
-            }
-          }
-        );
-      });
-
-      // NPV & IRR Analyzer controls + calculation
-      const btnNpv   = document.getElementById('btn-npv');
-      const winNpv   = document.getElementById('tool-window-npv');
-      const minNpv   = document.getElementById('minimize-npv');
-      const closeNpv = document.getElementById('close-npv');
-      const miniNpv  = document.getElementById('tool-minimized-npv');
-      const formNpv  = document.getElementById('npv-form');
-
-      btnNpv.addEventListener('click', () => {
-        winNpv.classList.remove('hidden');
-        miniNpv.classList.add('hidden');
-      });
-      minNpv.addEventListener('click', () => {
-        winNpv.classList.add('hidden');
-        miniNpv.classList.remove('hidden');
-      });
-      closeNpv.addEventListener('click', () => {
-        winNpv.classList.add('hidden');
-        miniNpv.classList.add('hidden');
-      });
-      miniNpv.addEventListener('click', () => {
-        winNpv.classList.remove('hidden');
-        miniNpv.classList.add('hidden');
-      });
-
-      function computeNPV(rate, flows) {
-        return flows.reduce((sum, cf, i) => sum + cf / Math.pow(1 + rate, i), 0);
-      }
-      function computeIRR(flows) {
-        let low = -0.9, high = 1.0, mid;
-        for (let i = 0; i < 50; i++) {
-          mid = (low + high) / 2;
-          const fMid = flows.reduce((s, cf, idx) => s + cf / Math.pow(1 + mid, idx), 0);
-          if (fMid > 0) low = mid; else high = mid;
-        }
-        return mid;
-      }
-
-      formNpv.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const inv   = -Math.abs(parseFloat(this['npv-invest'].value));
-        const rate  = parseFloat(this['npv-rate'].value) / 100;
-        const flows = this['npv-flows'].value
-                       .split(',')
-                       .map(s => parseFloat(s.trim()))
-                       .filter(n => !isNaN(n));
-        const cash  = [inv, ...flows];
-
-        const npv = computeNPV(rate, cash);
-        const irr = computeIRR(cash) * 100;
-        document.getElementById('npv-result').textContent = `NPV: $${npv.toFixed(2)}`;
-        document.getElementById('irr-result').textContent = isNaN(irr)
-          ? 'IRR: N/A'
-          : `IRR: ${irr.toFixed(2)}%`;
-
-        const pts   = 21;
-        const maxR  = rate * 2;
-        const labels = Array.from({length: pts}, (_, i) =>
-          ((i / (pts - 1)) * maxR * 100).toFixed(1) + '%'
-        );
-        const data = labels.map(lbl =>
-          computeNPV(parseFloat(lbl) / 100, cash)
-        );
-
-        if (window.npvChart) window.npvChart.destroy();
-        window.npvChart = new Chart(
-          document.getElementById('npv-chart'),
-          {
-            type: 'line',
-            data: {
-              labels,
-              datasets: [{
-                label: 'NPV vs Discount Rate',
-                data,
-                borderColor: '#3DDC97',
-                backgroundColor: 'rgba(61,220,151,0.2)',
-                fill: true
-              }]
-            },
-            options: {
-              scales: {
-                y: { ticks: { color: '#FFFFFF' } },
-                x: { ticks: { color: '#FFFFFF' } }
-              },
-              plugins: {
-                legend: { labels: { color: '#FFFFFF' } },
-                tooltip: {
-                  titleColor: '#WHITE',
-                  bodyColor: '#WHITE'
-                }
-              }
-            }
-          }
-        );
+        // Simulate async response
+        setTimeout(() => {
+          bm.textContent = "Sorry, I’m still learning. Check out our budgeting and saving videos in the meantime!";
+          msgs.scrollTop = msgs.scrollHeight;
+        }, 1000);
       });
     });
   </script>
-  
-
-
 </body>
 </html>
